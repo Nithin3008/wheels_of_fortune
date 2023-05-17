@@ -9,15 +9,14 @@ export function CategoryProvider({children})
         {
             const data1=await fetch("/api/categories")
             const recData=await data1.json()
-            console.log(recData.categories)
             setCategory(recData.categories)
 
         }
         url()
     },[])
-    return(<div>
+    return(
         <CategoryData.Provider value={{cateData}}>
             {children}
         </CategoryData.Provider>
-    </div>)
+    )
 }
