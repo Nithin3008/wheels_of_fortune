@@ -14,7 +14,9 @@ export const products = [
     categoryName: "Trucks",
     HP: 450,
     Torque: "691 Nm",
-    engine: "V6"
+    engine: "V6",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/f150.jpg?raw=true",
+    rating:5
   },
   {
     _id: uuid(),
@@ -24,7 +26,9 @@ export const products = [
     categoryName: "Trucks",
     HP: 437,
     Torque: "790 Nm",
-    engine: "V6"
+    engine: "V6",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/tundra.jpg?raw=true",
+    rating:4.7
   },
   {
     _id: uuid(),
@@ -34,7 +38,9 @@ export const products = [
     categoryName: "Trucks",
     HP: 420,
     Torque: "625 Nm",
-    engine: "V8"
+    engine: "V8",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/silverado.jpg?raw=true",
+    rating:4.5
   },
   {
     _id: uuid(),
@@ -44,7 +50,9 @@ export const products = [
     categoryName: "Trucks",
     HP: 470,
     Torque: "1300 Nm",
-    engine: "V8"
+    engine: "V8",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/sierra.jpg?raw=true",
+    rating:3.5
 
   },
   {
@@ -55,7 +63,9 @@ export const products = [
     categoryName: "Trucks",
     HP: 702,
     Torque: "885 Nm",
-    engine: "V8"
+    engine: "V8",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/ram.jpg?raw=true",
+    rating:2.8
   },
 
 
@@ -68,7 +78,9 @@ export const products = [
     categoryName: "Suv",
     HP: 523,
     Torque: "750 Nm",
-    engine: "V8"
+    engine: "V8",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/rangerover.jpg?raw=true",
+    rating:5.0
   },
   {
     _id: uuid(),
@@ -78,7 +90,9 @@ export const products = [
     categoryName: "Suv",
     HP: 577,
     Torque: "760 Nm",
-    engine: "V8"
+    engine: "V8",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/g63.jpg?raw=true",
+    rating:4.3
 
   },
   {
@@ -89,7 +103,9 @@ export const products = [
     categoryName: "Suv",
     HP: 523,
     Torque: "612 Nm",
-    engine: "V8"
+    engine: "V8",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/x7.jpg?raw=true",
+    rating:3.8
   },
 
   {
@@ -100,7 +116,9 @@ export const products = [
     categoryName: "Suv",
     HP: 707,
     Torque: "900 Nm",
-    engine: "V8"
+    engine: "V8",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/DBX.jpg?raw=true",
+    rating:4.8
   },
 
   {
@@ -111,7 +129,9 @@ export const products = [
     categoryName: "Suv",
     HP: 682,
     Torque: "885 Nm",
-    engine: "V8"
+    engine: "V8",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/Escalade-V.jpg?raw=true",
+    rating:3.5
   },
 
 
@@ -125,7 +145,9 @@ export const products = [
     categoryName: "Super Cars",
     HP: 635,
     Torque: "750 Nm",
-    engine: "V8"
+    engine: "V8",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/M5-CS.jpg?raw=true",
+    rating:4.8
 
   },
 
@@ -138,7 +160,9 @@ export const products = [
     categoryName: "Super Cars",
     HP: 963,
     Torque: "900 Nm",
-    engine: "V8"
+    engine: "V8",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/La-Ferrari.jpg?raw=true",
+    rating:4.2
   },
 
 
@@ -150,7 +174,9 @@ export const products = [
     categoryName: "Super Cars",
     HP: 1600,
     Torque: "1500 Nm",
-    engine: "V8"
+    engine: "V8",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/Jesko.jpg?raw=true",
+    rating:5.0
   },
 
 
@@ -163,7 +189,9 @@ export const products = [
     categoryName: "Super Cars",
     HP: 1000,
     Torque: "760 Nm",
-    engine: "V12"
+    engine: "V12",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/Valkyrie.jpg?raw=true",
+    rating:4.0
   },
 
 
@@ -175,7 +203,9 @@ export const products = [
     categoryName: "Super Cars",
     HP: 850,
     Torque: "750 Nm",
-    engine: "V12"
+    engine: "V12",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/Huayra.jpg?raw=true",
+    rating:3.5
   },
 
 
@@ -191,6 +221,8 @@ export const products = [
     categoryName: "EV",
     HP: 590,
     Torque: "830 Nm",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/e-tron%20Gt.jpg?raw=true",
+    rating:4.3
 
   },
 
@@ -202,6 +234,8 @@ export const products = [
     categoryName: "EV",
     HP: 830,
     Torque: "1600 Nm",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/Hummer.jpg?raw=true",
+    rating:4.0
 
   },
 
@@ -214,6 +248,8 @@ export const products = [
     categoryName: "EV",
     HP: 1914,
     Torque: "2360 Nm",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/Nevara.jpg?raw=true",
+    rating:4.8
   },
 
 
@@ -221,6 +257,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Air Sapphire",
+    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/Air%20Sapphire.jpg?raw=true",
     manufacturer: "Lucid Mototrs",
     price: "250000$",
     categoryName: "EV",
