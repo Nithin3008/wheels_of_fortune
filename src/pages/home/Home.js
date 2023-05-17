@@ -31,11 +31,33 @@ export function Home1() {
                     <div>
                         <p className="heading1 contentHeading">Welcome to Wheels of <span style={{ color: "orangered" }}>Fortune</span></p>
                         <p className="heading1">You can your purchase car which suits you</p>
+                        <button className="buttonSty">Shop Now</button>
                     </div>
                     <div>
                         <img className="images" src="https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/Category/suv.jpg?raw=true"></img>
                     </div>
                 </div>
+            </section>
+
+            <section className="contentContainer2">
+                <p className="heading2">SHOP BY CAETEGORY</p>
+            </section>
+            <section>
+                <div className="categoryBox">
+                    {category.map((val) =>
+                        <div className="categoryChild">
+                            <div><img className="categoryImages" src={`${val.src}`}></img></div>
+                            <div>
+                                <p className="categoryHeading catHead">{val.categoryName}</p>
+                                <p className="categoryHeading">{val.description}</p>
+                                <button className="buttonSty cateBut">Shop Now</button>
+                            </div>
+
+                        </div>
+                    )}
+                </div>
+
+
             </section>
         </div >
     </div >)
