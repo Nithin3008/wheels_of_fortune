@@ -93,7 +93,11 @@
     align-items: center;
     width: 650px;
     padding: 5px 5px;
-    /* box-shadow: 5px 5px 5px; */
+    
+}
+.categoryChild:hover
+{
+    box-shadow: 5px 5px 5px;
 }
 .categoryImages
 {
@@ -121,4 +125,26 @@
     max-width: 50%;
     margin: auto;
     text-align: center;
+}
+footer
+{
+    height:800px;
+    background-color:var(--main-clr);
+}
+.footerSec
+{
+    display: flex;
+    justify-content: space-between;
+}
+.secBox1 p
+{
+    padding: 5px 5px;
+}
+.secBox2 li
+{
+    list-style: none;
+    display: inline-block;
+    padding: 5px 4px;
+    margin-right: 5px;
+    font-size: 20px;
 }
