@@ -59,6 +59,22 @@ export function Home1() {
 
 
             </section>
+            <footer>
+                <div className="footerSec">
+                    <div className="secBox1">
+                        <p className="heading1">Wheels of <span style={{ color: "orangered" }}>Fortune</span> </p>
+                        <p>Fill your garage with beasts</p>
+                    </div>
+                    <div className="secBox1 secBox2">
+                        <ul>
+                            <p className="heading1">Connect</p>
+                            <li><a>Github</a></li>
+                            <li><a>LinkedIn</a></li>
+                            <li><a>Twitter</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
         </div >
     </div >)
 }
