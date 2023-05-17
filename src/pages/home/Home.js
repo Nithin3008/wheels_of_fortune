@@ -42,7 +42,7 @@ export function Home1() {
             <section className="contentContainer2">
                 <p className="heading2">SHOP BY CAETEGORY</p>
             </section>
-            <section>
+            <section style={{ marginTop: "10px" }}>
                 <div className="categoryBox">
                     {category.map((val) =>
                         <div className="categoryChild">
