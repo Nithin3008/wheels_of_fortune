@@ -68,9 +68,9 @@ export function Home1() {
                     <div className="secBox1 secBox2">
                         <ul>
                             <p className="heading1">Connect</p>
-                            <li><a>Github</a></li>
-                            <li><a>LinkedIn</a></li>
-                            <li><a>Twitter</a></li>
+                            <li><a href="/">Github</a></li>
+                            <li><a href="/">LinkedIn</a></li>
+                            <li><a href="/">Twitter</a></li>
                         </ul>
                     </div>
                 </div>
