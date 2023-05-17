@@ -1,16 +1,10 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { CategoryData } from "../DataProviders/CategoryProv"
+import { useContext } from "react"
 import "./home.css"
 export function Home1() {
-    const [category, setCategory] = useState([])
-    useEffect(() => {
-        const url = async () => {
-            const data = await fetch("/api/categories")
-            const recData = await data.json()
-            setCategory(recData.categories)
-            console.log(recData.categories)
-        }; url();
-    }, [])
+    const {cateData}=useContext(CategoryData)
     return (<div>
         <div className="mainBox">
             <header className="topSection">
@@ -44,7 +38,7 @@ export function Home1() {
             </section>
             <section style={{ marginTop: "10px" }}>
                 <div className="categoryBox">
-                    {category.map((val) =>
+                    {cateData.map((val) =>
                         <div className="categoryChild">
                             <div><img className="categoryImages" src={`${val.src}`}></img></div>
                             <div>
