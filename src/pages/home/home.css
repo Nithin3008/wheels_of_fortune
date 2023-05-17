@@ -93,11 +93,12 @@
     align-items: center;
     width: 650px;
     padding: 5px 5px;
+    border-radius: 5px;
     
 }
 .categoryChild:hover
 {
-    box-shadow: 5px 5px 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .categoryImages
 {
@@ -128,13 +129,18 @@
 }
 footer
 {
-    height:800px;
+    height:150px;
+    margin: 10px 0px;
+    padding: 10px 10px;
     background-color:var(--main-clr);
+    
 }
 .footerSec
 {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
 }
 .secBox1 p
 {
@@ -142,9 +148,20 @@ footer
 }
 .secBox2 li
 {
+    
     list-style: none;
     display: inline-block;
     padding: 5px 4px;
     margin-right: 5px;
+}
+.secBox2 a
+{
+    text-decoration: none;
     font-size: 20px;
+    padding: 5px 4px;
+
+}
+.secBox2 a:hover
+{
+    color: var(--font-clr);
 }
