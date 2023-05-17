@@ -39,3 +39,20 @@
     font-size: 25px;
     font-weight: 700;
 }
+.signBox1
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px 15px;
+    max-width: 400px;
+    margin: auto;
+    background-color: var(--main-clr);
+    border-radius: 5px ;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.signBox1 input,p,button
+{
+    margin: 10px 10px;
+}
