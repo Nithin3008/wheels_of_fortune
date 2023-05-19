@@ -1,10 +1,13 @@
 import { useContext } from "react"
-import { CategoryData } from "../DataProviders/CategoryProv"
+import { useParams } from "react-router-dom";
 import { ProductData } from "../DataProviders/ProductsProvid";
 import "./product.css"
 export function Product1()
 {
     const {producData}=useContext(ProductData)
+    const {cateType}=useParams()
+    console.log(cateType)
+    let prodData=cateType=="All"?producData :producData.filter((val)=>val.categoryName==cateType)
     return (
       <div>
             <header className="topSection">
@@ -61,10 +64,10 @@ export function Product1()
                         </div>
                     </div>
                     <div className="producBoxCards">
-                        {producData.map((val)=>
-                        <div className="productCards">
+                        {prodData.map((val)=>
+                        <div key={val.id} className="productCards">
 
-                            <div className="productImages">
+                            <div key={val.id} className="productImages">
                                 <img src={`${val.src}`}></img>
                                 </div>
                             <div>
