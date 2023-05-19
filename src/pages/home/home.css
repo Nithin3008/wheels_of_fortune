@@ -66,6 +66,7 @@
     border-radius: 5px;
     cursor: pointer;
     color: #f0f0f2;
+    text-decoration: none;
 }
 .contentContainer2
 {
@@ -73,12 +74,14 @@
    padding: 5px 5px; 
    background-color: #185464;
    /* width: 100%; */
+   
 }
 .heading2
 {
     font-size: 40px;
     font-weight: 800;
     color: var(--font-clr);
+    text-align: center;
 }
 .categoryBox
 {
@@ -115,10 +118,15 @@
     color:var(--bg-clr);
     
 }
-.cateBut
+/* .cateBut
 {
     
     background-color: var(--font-clr);
+    text-align: center;
+} */
+.categoryChild Link
+{
+    text-align: center;
 }
 .catHead{
     color: var(--font-clr);
