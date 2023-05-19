@@ -1,6 +1,7 @@
 import "./signup.css"
 import {Sg} from "../DataProviders/Api/SignupApi"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 export function Signup1()
 {
     const signupDetails=
@@ -23,9 +24,9 @@ export function Signup1()
 
                 </div>
                 <nav>
-                    <a href="/" className="linksStyling">Login</a>
-                    <a href="/" className="linksStyling">Cart</a>
-                    <a href="/" className="linksStyling">Whislist</a>
+                    <Link href="/" className="linksStyling">Login</Link>
+                    <Link href="/" className="linksStyling">Cart</Link>
+                    <Link href="/" className="linksStyling">Whislist</Link>
                 </nav>
             </div>
         </header>
@@ -36,7 +37,7 @@ export function Signup1()
                 <input type="text" onChange={(e)=>signupDetails.lastname=e.target.value} placeholder={"Last Name"}></input>
                 <input type="email" onChange={(e)=>signupDetails.email=e.target.value} placeholder={"E-mail"}></input>
                 <input type="password" onChange={(e)=>signupDetails.password=e.target.value} placeholder={"Password"}></input>
-                <input type="password" onChange={(e)=>signupDetails.password=e.target.value} placeholder={"Confirm Password"}></input>
+                
                
                 <button onClick={()=>settingData()} className="buttonSty">Register</button>
                 <p>Already have account <a href="/" style={{color:"orangered",textDecoration:"none"}}>Login!</a></p>
