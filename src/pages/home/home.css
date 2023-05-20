@@ -57,6 +57,18 @@
 {
     padding: 15px 15px;
 }
+.navButton
+{
+   background-color: white;
+   border: 0;
+    font-weight: 600;
+    padding: 10px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--bg-clr);
+   
+}
 .buttonSty
 {
     border: 0;
