@@ -2,11 +2,10 @@
 import "./login.css"
 import { useContext } from "react"
 import { LoginContext } from "../DataProviders/LoginProv"
-import { Link } from "react-router-dom"
+import { Link} from "react-router-dom"
 
 export function Login1() {
-    const { userDet, authToken, loginHandler } = useContext(LoginContext)
-   
+    const { userDet, loginHandler } = useContext(LoginContext)
     return (<div>
         <header className="topSection">
             <div className="topSectionBox">
