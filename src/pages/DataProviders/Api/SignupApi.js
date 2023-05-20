@@ -1,6 +1,9 @@
 // import { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 export function Sg({ details }) {
+  const navigate=useNavigate()
+ 
   const signupHandler = async () => {
     try {
       const response = await axios.post(`/api/auth/signup`, {
@@ -9,8 +12,8 @@ export function Sg({ details }) {
         email: details.email,
         password: details.password,
       });
-      console.log(response.data.encodedToken)
       localStorage.setItem("token", response.data.encodedToken);
+      navigate("/Login1")
     } catch (error) {
       console.log(error);
     }
