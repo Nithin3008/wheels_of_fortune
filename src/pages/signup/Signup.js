@@ -1,9 +1,13 @@
 import "./signup.css"
 import {Sg} from "../DataProviders/Api/SignupApi"
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { LoginContext } from "../DataProviders/LoginProv";
 export function Signup1()
 {
+    const {authToken,userDet}=useContext(LoginContext)
+    const nav=useNavigate()
     const signupDetails=
     {
         firstname:"",
@@ -24,9 +28,9 @@ export function Signup1()
 
                 </div>
                 <nav>
-                    <Link href="/" className="linksStyling">Login</Link>
-                    <Link href="/" className="linksStyling">Cart</Link>
-                    <Link href="/" className="linksStyling">Whislist</Link>
+                    <button onClick={()=>nav("/Login1")} className="navButton">Login</button>
+                    <button onClick={()=>authToken!="empty"?nav("/Cart1"):""} className="navButton">Cart</button>
+                    <button onClick={()=>authToken!="empty"?nav("/Whislist1"):""} className="navButton">Whislist</button>
                 </nav>
             </div>
         </header>
