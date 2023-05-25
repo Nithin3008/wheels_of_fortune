@@ -2,6 +2,8 @@ import { createContext, useContext, useEffect, useReducer, useState } from "reac
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { MainContext } from "./MainReducer";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const AuthContext=createContext()
 
 export function AuthProvider({children})
@@ -32,15 +34,18 @@ export function AuthProvider({children})
                         email: userDetails?.userName,
                         password: userDetails?.pwd,
                       });
-                      // console.log(response.data.encodedToken)
-                      if(response.data.encodedToken== localStorage.getItem("token"))
+                      console.log(response.data.encodedToken)
+                      if(response.status==200)
                       {
-                        
-                        alert("welcome")
+                       
+                        toast.success("Welcome Back",{
+                          position:"top-center"
+                      });
                         
                       }
                       localStorage.setItem("token", response.data.encodedToken);
                       dispatcherMain({type:"LoginHandle"})
+                      dispatcherMain({type:"getCart"})
                     } catch (error) {
                       console.log(error);
                     }
@@ -94,9 +99,14 @@ export function AuthProvider({children})
             // }
             // return state
            
-            return(<AuthContext.Provider value={{setUser,setHandler1}}>
+            return(
+            <div>
+              <AuthContext.Provider value={{setUser,setHandler1}}>
               {children}
-          </AuthContext.Provider>);   
+          </AuthContext.Provider>
+          <ToastContainer />
+              </div>
+           );   
         
     }
    
