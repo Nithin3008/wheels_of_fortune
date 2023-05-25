@@ -1,20 +1,22 @@
 import { useContext } from "react"
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 
 import { MainContext } from "../DataProviders/MainReducer";
 
 import "./product.css"
 export function Product1()
 {
-    
+    const nav=useNavigate()
     const {dispatcherMain,ProdDetails,LoginId}=useContext(MainContext)
     const {cateType}=useParams()
     console.log(cateType)
     const producData=[...ProdDetails]
     let prodData=cateType=="All"?producData :producData.filter((val)=>val.categoryName==cateType)
-   function AddedToCart(event,id)
+   function AddToCart(event,id)
    {
-        dispatcherMain({type:"AddToCart",payload:id})
+    console.log(id)
+        LoginId?dispatcherMain({type:"AddToCart",payload:id}):nav("/Login1")
+        
    }
     return (
       <div>
@@ -26,15 +28,15 @@ export function Product1()
                         </p>
                     </div>
                     <nav>
-                        <a href="/" className="linksStyling">
+                        <button onClick={()=>nav("/Login1")} className="buttonSty">
                             Login
-                        </a>
-                        <a href="/" className="linksStyling">
+                        </button>
+                        <button onClick={()=>LoginId?nav("/Cart1"):""} className="buttonSty">
                             Cart
-                        </a>
-                        <a href="/" className="linksStyling">
+                        </button>
+                        <button onClick={()=>LoginId?nav("/WhisList1"):""} className="buttonSty">
                             Whislist
-                        </a>
+                        </button>
                     </nav>
                 </div>
             </header>
@@ -82,7 +84,8 @@ export function Product1()
                                 <p>Title: {val.title}</p>
                                 <p>Manufacturer: {val.manufacturer}</p>
                                 <p>Power: {val.HP}</p>
-                                <p><button>Add to Cart</button></p>
+                                <p>Price: {val.price}$</p>
+                                <p><button onClick={(e)=>AddToCart(e,val._id)}>Add to Cart</button></p>
                             </div>
 
                             </div>)}
