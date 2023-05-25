@@ -1,57 +1,70 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import { MainContext } from "./MainReducer";
+import { MainContext } from "./MainReducer";
 export const AuthContext=createContext()
 
 export function AuthProvider({children})
 {
+  
     const nav=useNavigate()
-    // const {dispatcherMain}=useContext(MainContext)
-    const [state,dispatchAuth]=useReducer(AuthinFun,{count:1})
-    // const loginFun=()=>dispatcherMain({type:"LoginSucess"})
-    function AuthinFun(state,action)
+    const [handler,setHandler1]=useState("")
+    const [userDetails,setUser]=useState({})
+    const {dispatcherMain}=useContext(MainContext)
+    useEffect(()=>
     {
-            if(action.type=="LoginUser")            
-            {
-                
-               
-                const LoginHandler = async () => {
+      if(handler=="Login")
+      {
+        console.log("login going to execute")
+        LoginHandler()
+      }
+      else if(handler=="SignUp")
+      {
+        Signup()
+      }
+    },[handler])
+      // console.log(userDetails,handler)
+      function LoginHandler()
+      {
+                const loginHandler = async () => {
                     try {
                       const response = await axios.post(`/api/auth/login`, {
-                        email: action.payload.userName,
-                        password: action.payload.pwd,
+                        email: userDetails?.userName,
+                        password: userDetails?.pwd,
                       });
-                      console.log(response.data.encodedToken)
+                      // console.log(response.data.encodedToken)
                       if(response.data.encodedToken== localStorage.getItem("token"))
                       {
-                        console.log("hi")
-                        alert("welome Back dude")
-                        nav("/")
+                        
+                        alert("welcome")
+                        
                       }
                       localStorage.setItem("token", response.data.encodedToken);
-                      // loginFun()
+                      dispatcherMain({type:"LoginHandle"})
                     } catch (error) {
                       console.log(error);
                     }
+                    
+                    console.log("login calling")
+                   
+                    nav("/")
                   };
-
-                  LoginHandler()
-                  
-            }
-            else if(action.type=="signUpUser")
-            {
-                
-                const signupHandler = async () => {
+                  // setHandler1("")
+                  loginHandler()      
+      }        
+      function Signup()
+      {
+        
+                  const signupHandler = async () => {
                     try {
                       const response = await axios.post(`/api/auth/signup`, {
-                        firstName: action.payload.fName,
-                        lastName: action.payload.lName,
-                        email: action.payload.userName,
-                        password: action.payload.pwd,
+                        firstName: userDetails?.fName,
+                        lastName: userDetails?.lName,
+                        email: userDetails?.userName,
+                        password: userDetails?.pwd,
                       });
                      
-                      console.log(response.data.encodedToken)
+                      // console.log(response.data.encodedToken)
                       localStorage.setItem("token", response.data.encodedToken);
                       // loginFun()
                       if(response.status===201)
@@ -62,16 +75,28 @@ export function AuthProvider({children})
                     } catch (error) {
                       console.log(error);
                     }
+                    console.log("signup calling")
+                    
                   };
+                  // setHandler1("")
                   signupHandler()
-            }
-            return state
+      }         
+               
+      
+              
+               
+                  
+            // }
+            // else if(action.type=="signUpUser")
+            // {
+                
+                
+            // }
+            // return state
            
-        
+            return(<AuthContext.Provider value={{setUser,setHandler1}}>
+              {children}
+          </AuthContext.Provider>);   
         
     }
-    return(<AuthContext.Provider value={{dispatchAuth}}>
-        {children}
-    </AuthContext.Provider>);
-
-}
+   
