@@ -1,53 +1,60 @@
-import "./signup.css"
-import {Sg} from "../DataProviders/Api/SignupApi"
-import { useState } from "react"
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { LoginContext } from "../DataProviders/LoginProv";
-export function Signup1()
-{
-    const {authToken,userDet}=useContext(LoginContext)
-    const nav=useNavigate()
-    const signupDetails=
-    {
-        firstname:"",
-        lastname:"",
-        email:"",
-        password:"",
+import "./signup.css";
+import { useContext} from "react"
+import { AuthContext } from "../DataProviders/AuthProvider"
+import { MainContext } from "../DataProviders/MainReducer"
+export function Signup1() {
+  const {setHandler1,setUser}=useContext(AuthContext)
+  const {dispatcherMain}=useContext(MainContext)
+  function onSubmit(event)
+  {
+    event.preventDefault()
+    const usdDetails={
+      fName:event.target.firstName.value,
+      lName:event.target.lastName.value,
+      userName:event.target.userName.value,
+      pwd:event.target.pwd.value
     }
-    const [signupData,setSignup]=useState({})
-    function settingData()
-    {
-        setSignup(signupDetails) 
-    }
-    return(<div>
-        <header className="topSection">
-            <div className="topSectionBox">
-                <div>
-                    <p className="heading1">Wheels of <span style={{ color: "orangered" }}>Fortune</span></p>
-
-                </div>
-                <nav>
-                    <button onClick={()=>nav("/Login1")} className="navButton">Login</button>
-                    <button onClick={()=>authToken!="empty"?nav("/Cart1"):""} className="navButton">Cart</button>
-                    <button onClick={()=>authToken!="empty"?nav("/Whislist1"):""} className="navButton">Whislist</button>
-                </nav>
-            </div>
-        </header>
-        <section className="contentBox1">
-            <div className="signBox1">
-            <p className="heading1">Login</p>
-                <input type="text" onChange={(e)=>signupDetails.firstname=e.target.value} placeholder={"First Name"}></input>
-                <input type="text" onChange={(e)=>signupDetails.lastname=e.target.value} placeholder={"Last Name"}></input>
-                <input type="email" onChange={(e)=>signupDetails.email=e.target.value} placeholder={"E-mail"}></input>
-                <input type="password" onChange={(e)=>signupDetails.password=e.target.value} placeholder={"Password"}></input>
-                
-               
-                <button onClick={()=>settingData()} className="buttonSty">Register</button>
-                <p>Already have account <a href="/" style={{color:"orangered",textDecoration:"none"}}>Login!</a></p>
-                
-            </div>
-        </section>
-        <Sg details={signupData}></Sg>
-    </div>)
+    
+   dispatcherMain({type:"userDetails",payload:usdDetails})
+    setHandler1("SignUp")
+    setUser(usdDetails)
+   
+  }
+  return (
+    <div>
+      <header className="topSection">
+        <div className="topSectionBox">
+          <div>
+            <p className="heading1">
+              Wheels of <span style={{ color: "orangered" }}>Fortune</span>
+            </p>
+          </div>
+          <nav>
+            <button>Login</button>
+            <button className="navButton">Cart</button>
+            <button className="navButton">Whislist</button>
+          </nav>
+        </div>
+      </header>
+      <section className="contentBox1">
+        <div className="signBox1">
+          <p className="heading1">Sign up!</p>
+          <form className="formData" onSubmit={(e)=>onSubmit(e)}>
+          <input  id="firstName" type="text" placeholder={"First Name"}></input>
+          <input  id="lastName" type="text" placeholder={"Last Name"}></input>
+          <input  id="userName" type="email" placeholder={"User Name"}></input>
+          <input   id="pwd" type="password" placeholder={"Password"}></input>
+          <br></br>
+          <button type="submit"  className="buttonSty">Sign up!</button>
+          </form>
+          <p>
+            Already have account{" "}
+            <a  style={{ color: "orangered", textDecoration: "none" }}>
+              Login!
+            </a>
+          </p>
+        </div>
+      </section>
+    </div>
+  );
 }
