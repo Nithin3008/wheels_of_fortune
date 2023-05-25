@@ -53,17 +53,36 @@ export function MainProvider({children})
         {
 
         }
-        // switch(action.type)
+        else if(action.type=="AddToCart")
+        {
+                const x=state.products.find((val)=>val._id==action.payload)
+               
+
+                return {...state,Cart:[...state.Cart,x]};
+        }
+        else if(action.type=="RemoveFromCart")
+        {
+                const x=state.Cart.filter((val)=>val._id!==action.payload)
+               
+
+                return {...state,Cart:[...state.Cart,x]};
+        }
+        else if(action.type=="AddToWhislist")
+        {
+                const x=state.products.find((val)=>val._id==action.payload)
+               
+
+                return {...state, WhisList:[...state. WhisList,x]};
+        }
+
+         
+     
         // {
         //     case "LoginSucess":
                 
         //             return{...state,isLoggedin:!state.isLoggedin};
                 
-        //     // case "AddToCart":
-                
-        //     //         const x=producData.find((val)=>val.id==action.payload)
-        //     //         console.log("Added to Cart",x)
-        //     //         return {...state,Cart:[...state.Cart,x]};
+       
                 
                 
         //     // case "AddingCate":
@@ -98,8 +117,8 @@ export function MainProvider({children})
         //         return state  
         return state
         }
-        console.log(state.user)
-    return(<MainContext.Provider value={{dispatcherMain,ProdDetails:state.products,LoginId:state.isLoggedin}}>
+        console.log(state.Cart)
+    return(<MainContext.Provider value={{dispatcherMain,ProdDetails:state.products,LoginId:state.isLoggedin,CartData:state.Cart}}>
         {children}
     </MainContext.Provider>)
     }
