@@ -2,17 +2,33 @@
 import "./login.css"
 
 import { Link} from "react-router-dom"
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { AuthContext } from "../DataProviders/AuthProvider"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export function Login1() {
   
     const {setUser,setHandler1}=useContext(AuthContext)
-    console.log(localStorage.getItem("token"))
     const details={userName:"",pwd:""}
+  
     function sendData()
     {
-        setHandler1("Login")
-       setUser(details)
+       
+        if(details.userName.length>0 && details.pwd.length>0)
+        {
+            console.log("hi")
+            setHandler1("Login")
+            setUser(details)
+        }
+        else
+        {
+            toast.error("Please Enter proper details",{
+                position:"top-center"
+            });
+            
+        }
+        
+       
     }
     function sendData2()
     {
@@ -47,5 +63,6 @@ export function Login1() {
             </div>
             
         </section>
+       <ToastContainer />
     </div>)
 }
