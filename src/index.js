@@ -5,8 +5,9 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
 import { CategoryProvider } from "./pages/DataProviders/CategoryProv";
-import { ProductProvider } from "./pages/DataProviders/ProductsProvid";
-import { LoginProvider } from "./pages/DataProviders/LoginProv";
+
+import { AuthProvider } from "./pages/DataProviders/AuthProvider";
+import { MainProvider } from "./pages/DataProviders/MainReducer";
 // Call make Server
 makeServer();
 
@@ -14,18 +15,19 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <LoginProvider>
-      <ProductProvider>
+    <MainProvider> 
+    <AuthProvider>
+    
+      
       <CategoryProvider>
 
       <App />
       </CategoryProvider>
 
-      </ProductProvider>
-      </LoginProvider>
-      
-      
     
+     
+      </AuthProvider>
+      </MainProvider>
     </Router>
     
   </React.StrictMode>,
