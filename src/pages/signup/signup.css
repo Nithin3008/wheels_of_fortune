@@ -80,3 +80,11 @@
     cursor: pointer;
     color: #f0f0f2;
 }
+.formData
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px;
+    
+}
