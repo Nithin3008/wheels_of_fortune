@@ -1,22 +1,26 @@
-import { createContext, useEffect, useState } from "react";
-export const ProductData=createContext()
-export function ProductProvider({children})
+import {  useContext, useEffect } from "react";
+import { MainContext } from "./MainReducer";
+
+
+export function ProductProvider()
 {
-    const [producData,setProduct]=useState([])
+    const {dispatcherMain}=useContext(MainContext)
+   
     useEffect(()=>
     {
         const url=async()=>
         {
-            const data1=await fetch("/api/products")
-            const recData=await data1.json()
-            setProduct(recData.products)
+            const data2=await fetch("/api/products")
+            const recData2=await data2.json()
+            // console.log(recData2.products)
+            dispatcherMain({type:"AddingProd",payload:recData2.products})
+  
 
         }
         url()
     },[])
-    return(
-        <ProductData.Provider value={{producData}}>
-            {children}
-        </ProductData.Provider>
-    )
+    return(<div>
+
+    </div> )
+    
 }
