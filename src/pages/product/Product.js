@@ -1,13 +1,21 @@
 import { useContext } from "react"
 import { useParams } from "react-router-dom";
-import { ProductData } from "../DataProviders/ProductsProvid";
+
+import { MainContext } from "../DataProviders/MainReducer";
+
 import "./product.css"
 export function Product1()
 {
-    const {producData}=useContext(ProductData)
+    
+    const {dispatcherMain,ProdDetails,LoginId}=useContext(MainContext)
     const {cateType}=useParams()
     console.log(cateType)
+    const producData=[...ProdDetails]
     let prodData=cateType=="All"?producData :producData.filter((val)=>val.categoryName==cateType)
+   function AddedToCart(event,id)
+   {
+        dispatcherMain({type:"AddToCart",payload:id})
+   }
     return (
       <div>
             <header className="topSection">
