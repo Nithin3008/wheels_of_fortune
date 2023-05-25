@@ -1,5 +1,5 @@
 import { createContext, useReducer,useContext } from "react";
-
+import axios from "axios";
 
 
 export const MainContext=createContext()
@@ -53,28 +53,33 @@ export function MainProvider({children})
         {
 
         }
-        else if(action.type=="AddToCart")
+        else if(action.type="getCart")
         {
-                const x=state.products.find((val)=>val._id==action.payload)
-               
-
-                return {...state,Cart:[...state.Cart,x]};
+            const encodedToken=localStorage.getItem("token")
+            const getCart = async () => {
+                try {
+                    const response = await axios.get(`/api/user/cart`, {
+                      headers: {
+                        authorization: encodedToken, // passing token as an authorization header
+                      },
+                    });
+                    if(response.status==200)
+                    {
+                        return {...state,Cart:response.data.cart}
+                    }
+                    
+                  } catch (error) {
+                    console.log(error);
+                  }
+              };
+             getCart()
         }
-        else if(action.type=="RemoveFromCart")
-        {
-                const x=state.Cart.filter((val)=>val._id!==action.payload)
+        // else if(action.type=="AddToCart")
+        // {
+           
+        // }
+        
                
-
-                return {...state,Cart:[...state.Cart,x]};
-        }
-        else if(action.type=="AddToWhislist")
-        {
-                const x=state.products.find((val)=>val._id==action.payload)
-               
-
-                return {...state, WhisList:[...state. WhisList,x]};
-        }
-
          
      
         // {
@@ -117,8 +122,8 @@ export function MainProvider({children})
         //         return state  
         return state
         }
-        console.log(state.Cart)
-    return(<MainContext.Provider value={{dispatcherMain,ProdDetails:state.products,LoginId:state.isLoggedin,CartData:state.Cart}}>
+        console.log("cart loading",state.Cart)
+    return(<MainContext.Provider value={{dispatcherMain,ProdDetails:state.products,LoginId:state.isLoggedin,CartData:state.Cart,WhisListData:state.WhisList}}>
         {children}
     </MainContext.Provider>)
     }
