@@ -74,6 +74,8 @@ export function AuthProvider({children})
                       // loginFun()
                       if(response.status===201)
                       {
+                        toast.success(`Welcome ${userDetails.fName}`,{
+                          position:"top-center"})
                         nav("/Login1")
                       }
                       
