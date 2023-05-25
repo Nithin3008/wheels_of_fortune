@@ -4,11 +4,9 @@ import "./cart.css"
 import { MainContext } from "../DataProviders/MainReducer";
 export function Cart1()
 {
-  useEffect(()=>
-  {
-    dispatcherMain({type:"getCart"})
-  },[CartData])
-    const {CartData,LoginId,dispatcherMain}=useContext(MainContext)
+  const {CartData,LoginId,dispatcherMain}=useContext(MainContext)
+ 
+    
     const nav=useNavigate()
     function removeCart(id)
     {
