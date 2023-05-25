@@ -4,9 +4,16 @@ import "./cart.css"
 import { MainContext } from "../DataProviders/MainReducer";
 export function Cart1()
 {
-    const {CartData,LoginId}=useContext(MainContext)
+    const {CartData,LoginId,dispatcherMain}=useContext(MainContext)
     const nav=useNavigate()
-
+    function removeCart(id)
+    {
+        dispatcherMain({type:"RemoveFromCart",payload:id})
+    }
+    function addtoWhislist(id)
+    {
+        dispatcherMain({type:"AddToWhislist",payload:id})
+    }
     console.log(CartData)
     return(<div>
        <header className="topSection">
@@ -42,8 +49,8 @@ export function Cart1()
                                 <p>Manufacturer: {val.manufacturer}</p>
                                 <p>Power: {val.HP}</p>
                                 <p>Price: {val.price}$</p>
-                                <button className="buttonSty cart">Remove from Cart</button>
-                                <button className="buttonSty cart">Move to WhisList</button>
+                                <button onClick={()=>removeCart(val._id)} className="buttonSty cart">Remove from Cart</button>
+                                <button onClick={()=>addtoWhislist(val._id)} className="buttonSty cart">Move to WhisList</button>
                             </div>
 
                             </div>)}
