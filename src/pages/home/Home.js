@@ -2,13 +2,13 @@
 import { Link,useNavigate } from "react-router-dom";
 import { CategoryData } from "../DataProviders/CategoryProv";
 import { useContext } from "react";
-import {ProductProvider} from "../DataProviders/ProductsProvid"
+import { MainContext } from "../DataProviders/MainReducer";
 import "./home.css";
 export function Home1() {
   const { cateData } = useContext(CategoryData);
   console.log(localStorage.getItem("token"))
   const nav=useNavigate()
-
+  const {LoginId}=useContext(MainContext)
   return (
     <div>
       <div className="mainBox">
@@ -23,10 +23,10 @@ export function Home1() {
               <button onClick={()=>nav("/Login1")}  className="navButton">
                 Login
               </button>
-              <button  className="navButton">
+              <button onClick={()=>LoginId?nav("/Cart1"):""}  className="navButton">
                 Cart
               </button>
-              <button className="navButton">
+              <button onClick={()=>LoginId?nav("/Whislist1"):""}  className="navButton">
                 Whislist
               </button>
             </nav>
