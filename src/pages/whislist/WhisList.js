@@ -34,17 +34,17 @@ export function Whislist1()
         <div>
         <div className="cartItems">
                 {WhisListData.map((val)=>
-                        <div key={val.id} className="productCards">
+                        <div key={val._id} className="productCards">
 
-                            <div key={val.id} className="productImages">
+                            <div key={val._id} className="productImages">
                                 <img src={`${val.src}`}></img>
                                 </div>
-                            <div>
+                            <div key={val._id}>
                                 <p>Title: {val.title}</p>
                                 <p>Manufacturer: {val.manufacturer}</p>
                                 <p>Power: {val.HP}</p>
                                 <p>Price: {val.price}$</p>
-                                <button className="buttonSty">Remove from WhisList </button>
+                                <button onClick={()=>nav("/Cart1")} className="buttonSty">Go to Cart </button>
                                 
                             </div>
 
