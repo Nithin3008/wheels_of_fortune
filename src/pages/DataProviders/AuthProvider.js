@@ -25,8 +25,8 @@ export function AuthProvider({children})
         Signup()
       }
     },[handler])
-      // console.log(userDetails,handler)
-      function LoginHandler()
+    
+      const LoginHandler=async()=>
       {
                 const loginHandler = async () => {
                     try {
@@ -34,23 +34,27 @@ export function AuthProvider({children})
                         email: userDetails?.userName,
                         password: userDetails?.pwd,
                       });
-                      console.log(response.data.encodedToken)
+                      
                       if(response.status==200)
                       {
                        
                         toast.success("Welcome Back",{
                           position:"top-center"
                       });
-                        
+                      
                       }
                       localStorage.setItem("token", response.data.encodedToken);
-                      dispatcherMain({type:"LoginHandle"})
-                      dispatcherMain({type:"getCart"})
+                      console.log(response.data)
+                      const x={fName:response.data.foundUser.firstName,lName:response.data.foundUser.lastName,userName:response.data.foundUser.email}
+                     console.log(x)
+                      
+                      dispatcherMain({type:"LoginHandler",payload:x})
+                     
                     } catch (error) {
                       console.log(error);
                     }
                     
-                    console.log("login calling")
+                    
                    
                     nav("/")
                   };
@@ -69,7 +73,7 @@ export function AuthProvider({children})
                         password: userDetails?.pwd,
                       });
                      
-                      // console.log(response.data.encodedToken)
+                    
                       localStorage.setItem("token", response.data.encodedToken);
                       // loginFun()
                       if(response.status===201)
@@ -82,7 +86,7 @@ export function AuthProvider({children})
                     } catch (error) {
                       console.log(error);
                     }
-                    console.log("signup calling")
+                   
                     
                   };
                   // setHandler1("")
