@@ -1,10 +1,27 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { v4 as uuid } from "uuid";
 
 
 export const MainContext = createContext();
 
 export function MainProvider({ children }) {
+    useEffect(()=>
+    {
+        console.log("hi prod cart")
+        const url=async()=>
+        {
+            const data1=await fetch("/api/categories")
+            const recData=await data1.json()
+            const data2=await fetch("/api/products")
+            const recData2=await data2.json()
+           
+            dispatcherMain({type:"AddingProd",payload:recData2.products})
+            dispatcherMain({type:"CategoryData",payload:recData.categories})
+            
+
+        }
+        url()
+    },[])
     console.log("main reducer 2 times")
     const MainData = {
         isLoggedin: false,
@@ -25,6 +42,7 @@ export function MainProvider({ children }) {
         products: [],
         Cart: [],
         Whislist: [],
+        CategoryFilter:0
     };
 
     const [state, dispatcherMain] = useReducer(MainFun, MainData);
@@ -65,9 +83,17 @@ export function MainProvider({ children }) {
     {
         return{...state,address:action.payload}
     }
+    else if(action.type==="logoutUser")
+    {
+        return{...state,isLoggedin:false}
+    }
+    else if(action.type=="ApplyStarFilter")
+    {
+        return{...state,CategoryFilter:action.payload}
+    }
     return state;
 }
-console.log(state.address)
+console.log(state.Category)
 
 return (
     <MainContext.Provider
@@ -78,7 +104,9 @@ return (
             CartData: state.Cart,
             WhisListData: state.Whislist,
             Category:state.Category,
-            AddressUser:state.address
+            AddressUser:state.address,
+            ProfileDetails:state.user,
+            starRating:state.CategoryFilter
         }}
     >
         {children}
