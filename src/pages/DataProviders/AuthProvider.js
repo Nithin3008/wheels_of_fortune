@@ -15,18 +15,20 @@ export function AuthProvider({children})
     const {dispatcherMain}=useContext(MainContext)
     useEffect(()=>
     {
+      
       if(handler=="Login")
       {
-        console.log("login going to execute")
+        
         LoginHandler()
       }
+     
       else if(handler=="SignUp")
       {
         Signup()
       }
     },[handler])
     
-      const LoginHandler=async()=>
+      function LoginHandler()
       {
                 const loginHandler = async () => {
                     try {
@@ -44,9 +46,9 @@ export function AuthProvider({children})
                       
                       }
                       localStorage.setItem("token", response.data.encodedToken);
-                      console.log(response.data)
+                     
                       const x={fName:response.data.foundUser.firstName,lName:response.data.foundUser.lastName,userName:response.data.foundUser.email}
-                     console.log(x)
+                     
                       
                       dispatcherMain({type:"LoginHandler",payload:x})
                      
@@ -58,7 +60,7 @@ export function AuthProvider({children})
                    
                     nav("/")
                   };
-                  // setHandler1("")
+                  
                   loginHandler()      
       }        
       function Signup()
@@ -89,21 +91,14 @@ export function AuthProvider({children})
                    
                     
                   };
-                  // setHandler1("")
+                 
                   signupHandler()
       }         
                
       
               
                
-                  
-            // }
-            // else if(action.type=="signUpUser")
-            // {
-                
-                
-            // }
-            // return state
+        
            
             return(
             <div>
