@@ -6,7 +6,7 @@ export function Whislist1()
 {
     const {LoginId,WhisListData}=useContext(MainContext)
     const nav=useNavigate()
-    
+    console.log(WhisListData)
     return(<div>
          <header className="topSection">
           <div className="topSectionBox">
@@ -34,12 +34,12 @@ export function Whislist1()
         <div>
         <div className="cartItems">
                 {WhisListData.map((val)=>
-                        <div key={val._id} className="productCards">
+                        <div key={val.title} className="productCards">
 
                             <div key={val._id} className="productImages">
                                 <img src={`${val.src}`}></img>
                                 </div>
-                            <div key={val._id}>
+                            <div key={val._id} >
                                 <p>Title: {val.title}</p>
                                 <p>Manufacturer: {val.manufacturer}</p>
                                 <p>Power: {val.HP}</p>
