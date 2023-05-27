@@ -57,9 +57,17 @@ export function MainProvider({ children }) {
     {
         return { ...state, Category: action.payload };
     }
+    else if(action.type==="AddAddress")
+    {
+        return{...state,address:[...state.address,action.payload]}
+    }
+    else if(action.type==="removeAddress")
+    {
+        return{...state,address:action.payload}
+    }
     return state;
 }
-
+console.log(state.address)
 
 return (
     <MainContext.Provider
