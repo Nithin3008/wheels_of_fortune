@@ -1,0 +1,78 @@
+.MainBox
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.AddressBar
+{
+    width: 50%;
+}
+.AddressItems
+{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    background-color: orangered;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin: 10px 30px;
+    justify-content: space-around;
+    /* text-align: center; */
+}
+.AddressItems button
+{
+    padding: 5px 5px;
+    height: 40px;
+    border: 0;
+    border-radius: 5px;
+}
+.Form{
+    padding: 10px 10px;
+    margin: 10px 30px;
+    border: 5px solid orangered;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.Form div
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.Form span
+{
+    font-size: 20px;
+    font-weight: 400;
+    padding: 10px 10px;
+}
+.Form input
+{
+    margin-left: 40px;
+}
+.Form button
+{
+    border: 0;
+    font-size: 16px;
+    background-color: orangered;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 10px;
+}
+.addBtn 
+{
+    text-align: center;
+   
+}
+.addBtn button
+{
+    font-size: 20px;
+    border: 0;
+    background-color: orangered;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 10px;
+}
