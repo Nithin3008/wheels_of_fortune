@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export const FuncContext=createContext()
 export function FuncProvider({ children }) {
 
-    const {CartData,ProdDetails,dispatcherMain}=useContext(MainContext)
+    const {CartData,ProdDetails,dispatcherMain,AddressUser}=useContext(MainContext)
 
     console.log("2 times")
   const pushCartData = async (id) => {
@@ -222,7 +222,17 @@ const decreItem= async(id)=>
 
 
 
-
+function removeAddress(id)
+{
+  const addr=AddressUser.filter((val)=>val.id!==id)
+  dispatcherMain({type:"removeAddress",payload:addr})
+  console.log(addr)
+}
+function AddAddress(newAddr)
+{
+  console.log(newAddr)
+  dispatcherMain({type:"AddAddress",payload:newAddr})
+}
 
 
 
@@ -244,7 +254,7 @@ const decreItem= async(id)=>
 
 
   return (<>
-  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem}}>
+  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem,AddAddress,removeAddress}}>
     {children}
   </FuncContext.Provider>
   <ToastContainer />
