@@ -1,9 +1,11 @@
-import { createContext, useReducer, useContext } from "react";
-import axios from "axios";
+import { createContext, useReducer } from "react";
+import { v4 as uuid } from "uuid";
+
 
 export const MainContext = createContext();
 
 export function MainProvider({ children }) {
+    console.log("main reducer 2 times")
     const MainData = {
         isLoggedin: false,
         user: {
@@ -12,12 +14,14 @@ export function MainProvider({ children }) {
             userName: "",
         },
         address:[ {
+            id:uuid(),
+            phoneNo:7894561230,
             street: "Wall street lower manhattam",
             code: 10005,
             city: "New York",
             country: "USA",
         },],
-
+        Category:[],
         products: [],
         Cart: [],
         Whislist: [],
@@ -41,7 +45,7 @@ export function MainProvider({ children }) {
             return {...state,Cart:action.payload}
         } 
         else if (action.type == "AddCartItem") {
-            console.log(action.payload)
+           
             return {...state,Cart:action.payload}
     }
     else if(action.type=="AddWhislistItem")
@@ -49,12 +53,14 @@ export function MainProvider({ children }) {
         
         return {...state, Whislist:action.payload}
     }
-    
-
+    else if(action.type=="CategoryData")
+    {
+        return { ...state, Category: action.payload };
+    }
     return state;
 }
 
-console.log("cart loading",state.user)
+
 return (
     <MainContext.Provider
         value={{
@@ -63,6 +69,8 @@ return (
             LoginId: state.isLoggedin,
             CartData: state.Cart,
             WhisListData: state.Whislist,
+            Category:state.Category,
+            AddressUser:state.address
         }}
     >
         {children}
