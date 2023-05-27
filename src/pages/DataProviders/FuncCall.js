@@ -6,9 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 export const FuncContext=createContext()
 export function FuncProvider({ children }) {
 
-    const {CartData,ProdDetails,LoginId,dispatcherMain}=useContext(MainContext)
+    const {CartData,ProdDetails,dispatcherMain}=useContext(MainContext)
 
-
+    console.log("2 times")
   const pushCartData = async (id) => {
     const product = ProdDetails.find((val) => val._id == id);
 
@@ -27,7 +27,7 @@ export function FuncProvider({ children }) {
             },
           }
         );
-        console.log(response.data.cart);
+        
         if (response.status === 201) {
           toast.success("Item added to Cart",{
             position:"bottom-right"})
@@ -40,34 +40,48 @@ export function FuncProvider({ children }) {
     getCart();
   };
 
-const cartFetch=async()=>
-{
-    const encodedToken = localStorage.getItem("token");
-    const getCart = async () => {
-        try {
-            const response = await axios.get(`/api/user/cart`, {
-                headers: {
-                    authorization: encodedToken, // passing token as an authorization header
-                },
-            });
-            // console.log("cart loading",response.data)
-            // 
-            if (response.status == 200) {
-               dispatcherMain({type:"getCart",payload:response.data.cart})
+// const cartFetch=async()=>
+// {
+//     const encodedToken = localStorage.getItem("token");
+//     const getCart = async () => {
+//         try {
+//             const response = await axios.get(`/api/user/cart`, {
+//                 headers: {
+//                     authorization: encodedToken, // passing token as an authorization header
+//                 },
+//             });
+//             // console.log("cart loading",response.data)
+//             // 
+//             if (response.status == 200) {
+//                dispatcherMain({type:"getCart",payload:response.data.cart})
                 
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    };
-    getCart();
+//             }
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     };
+//     getCart();
+// }
+const itemInCart =(id)=>
+{
+  const product = CartData.find((val) => val._id === id?val.qty:false);
+  // console.log(product)
+  
+  if(product===undefined)
+  {
+    
+    return 0
+  }  
+  else
+  {
+    
+    return id
+  }
 }
-
 
 const pushWhislistData = async (id) => {
     const product = CartData.find((val) => val._id == id);
 
-    console.log("hi whist I'm ur cart",CartData,product);
     const encodedToken = localStorage.getItem("token");
     const getWhislist = async () => {
       try {
@@ -113,14 +127,97 @@ const removeCartItem= async(id)=>
        {
         toast.warning("Removed from Cart",{
           position:"bottom-right"})
-        dispatcherMain({type:"AddCartItem",payload:response.data.cart})
+        // dispatcherMain({type:"AddCartItem",payload:response.data.cart})
+        // pushWhislistData(id)
        }
+       dispatcherMain({type:"AddCartItem",payload:response.data.cart})
         console.log(response.data)
     } catch (error) {
         console.log("error")
     }
    }
    removeItem()
+}
+
+
+
+
+
+const increItem= async(id)=>
+{
+  // const product = CartData.find((val) => val._id == id);
+
+   const increItem=async()=>
+   {
+    const encodedToken = localStorage.getItem("token");
+    try {
+        const response=await axios.post(`/api/user/cart/${id}`,
+        {
+          action:{
+            type:"increment"
+          }
+        },
+         {   
+        headers: {
+              authorization: encodedToken,
+            },
+        }
+       
+        
+        )
+        console.log(response.data)
+        if(response.status==200)
+       {
+        toast.success("Added one more",{
+          position:"bottom-right"})
+     
+       }
+       dispatcherMain({type:"AddCartItem",payload:response.data.cart})
+      
+    } catch (error) {
+        console.log("error")
+    }
+   }
+   increItem()
+}
+
+
+const decreItem= async(id)=>
+{
+  // const product = CartData.find((val) => val._id == id);
+
+   const decrItem=async()=>
+   {
+    const encodedToken = localStorage.getItem("token");
+    try {
+        const response=await axios.post(`/api/user/cart/${id}`,
+        {
+          action:{
+            type:"decrement"
+          }
+        },
+         {   
+        headers: {
+              authorization: encodedToken,
+            },
+        }
+       
+        
+        )
+        console.log(response.data)
+        if(response.status==200)
+       {
+        toast.warning("Removed one item",{
+          position:"bottom-right"})
+     
+       }
+       dispatcherMain({type:"AddCartItem",payload:response.data.cart})
+      
+    } catch (error) {
+        console.log("error")
+    }
+   }
+   decrItem()
 }
 
 
@@ -134,8 +231,20 @@ const removeCartItem= async(id)=>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
   return (<>
-  <FuncContext.Provider value={{pushCartData,cartFetch,pushWhislistData,removeCartItem}}>
+  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem}}>
     {children}
   </FuncContext.Provider>
   <ToastContainer />
