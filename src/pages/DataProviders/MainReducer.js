@@ -42,7 +42,10 @@ export function MainProvider({ children }) {
         products: [],
         Cart: [],
         Whislist: [],
-        CategoryFilter:0
+        CategoryFilter:[],
+    
+        Rating:0,
+        Range:4000000,
     };
 
     const [state, dispatcherMain] = useReducer(MainFun, MainData);
@@ -87,26 +90,46 @@ export function MainProvider({ children }) {
     {
         return{...state,isLoggedin:false}
     }
-    else if(action.type=="ApplyStarFilter")
+   
+    else if(action.type==="shopProd")
     {
         return{...state,CategoryFilter:action.payload}
     }
+    else if(action.type=="setStar")
+    {
+        return{...state,Rating:action.payload}
+    }
+    else if(action.type=="setRange")
+    {
+        return{...state,Range:action.payload}
+    }
+    else if(action.type="cleanAll")
+    {
+        return{...state,Range:4000000,CategoryFilter:[],Rating:0}
+    }
+    // else if(action.type==="AddCate")
+    // {
+    //     return {...state,CategorySelector:[...state.CategorySelector,action.payload]}
+    // }
     return state;
 }
-console.log(state.Category)
+
 
 return (
     <MainContext.Provider
         value={{
             dispatcherMain,
             ProdDetails: state.products,
+            ProdDetailsCate:state.CategoryFilter,
             LoginId: state.isLoggedin,
             CartData: state.Cart,
             WhisListData: state.Whislist,
             Category:state.Category,
             AddressUser:state.address,
             ProfileDetails:state.user,
-            starRating:state.CategoryFilter
+            ratingFilter:state.Rating,
+            Range:state.Range
+           
         }}
     >
         {children}
