@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export const FuncContext=createContext()
 export function FuncProvider({ children }) {
 
-    const {CartData,ProdDetails,dispatcherMain,AddressUser}=useContext(MainContext)
+    const {CartData,ProdDetails,dispatcherMain,AddressUser,ProdDetailsCate}=useContext(MainContext)
 
     console.log("2 times")
   const pushCartData = async (id) => {
@@ -226,24 +226,62 @@ function removeAddress(id)
 {
   const addr=AddressUser.filter((val)=>val.id!==id)
   dispatcherMain({type:"removeAddress",payload:addr})
+   toast.warning("Removed Address",{
+     position:"bottom-right"})
+
+  
   console.log(addr)
 }
 function AddAddress(newAddr)
 {
   console.log(newAddr)
   dispatcherMain({type:"AddAddress",payload:newAddr})
+   toast.success("Added new Address",{
+     position:"bottom-right"})
 }
 
+function logoutUser()
+{
+  localStorage.clear("token")
+  dispatcherMain({type:"logoutUser"})
+}
 
+function starFilterSet(star)
+{
+  dispatcherMain({type:"ApplyStarFilter",payload:star})
+}
 
+function shopCate(cate)
+{
+  console.log(cate,ProdDetailsCate)
+  
+  const x=ProdDetailsCate.filter((val)=>val.categoryName!==cate)
+ 
+  const y=ProdDetails.filter((val)=>val.categoryName===cate)
+  const z=x.length==0?y:[...x,...y]
 
-
-
-
-
-
-
-
+  
+  dispatcherMain({type:"shopProd",payload:z})
+  
+}
+function removeCate(cate)
+{
+  const x=ProdDetailsCate.filter((val)=>val.categoryName!==cate)
+  console.log(x)
+  dispatcherMain({type:"shopProd",payload:x})
+}
+function setStars(rating)
+{
+  dispatcherMain({type:"setStar",payload:rating})
+}
+function setRange(range)
+{
+  dispatcherMain({type:"setRange",payload:range})
+}
+function  clearAllFilter()
+{
+  dispatcherMain({type:"cleanAll"})
+}
 
 
 
@@ -254,7 +292,7 @@ function AddAddress(newAddr)
 
 
   return (<>
-  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem,AddAddress,removeAddress}}>
+  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem,AddAddress,removeAddress,starFilterSet,shopCate,removeCate,setStars,setRange,clearAllFilter}}>
     {children}
   </FuncContext.Provider>
   <ToastContainer />
