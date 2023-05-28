@@ -1,18 +1,17 @@
 import { useContext, useState } from "react";
 import { MainContext } from "../DataProviders/MainReducer";
+import { v4 as uuid } from "uuid";
+import { FuncContext } from "../DataProviders/FuncCall";
 import "./checkout.css"
 export function Checkout1()
 {
     const {AddressUser,CartData}=useContext(MainContext)
+    const {AddAddress,removeAddress}=useContext(FuncContext)
     const totalPrice=CartData.reduce((acc,val)=>(acc+val.price),0)
     const [formShow,setForm]=useState(false)
+    const [idAddr,setId]=useState("")
     console.log(AddressUser,CartData)
-    function selectRadio(event)
-    {
-        event.target.checked=true
-        const str=event.target.checked
-        console.log(str)
-    }
+  
     function showForm()
     {
        setForm(true)
@@ -20,13 +19,42 @@ export function Checkout1()
     function submitForm(event)
     {
         event.preventDefault();
-        console.log("submit form")
-        console.log(event.target.code.value)
+        
+        const addr={
+            id:uuid(),
+            street:event.target.street.value,
+            phno:event.target.phnNo.value,
+            city:event.target.city.value,
+            code:event.target.code.value,
+            country:event.target.country.value,
+        }
+        console.log(addr)
+        AddAddress(addr)
+        setForm(false)
     }
     function hideForm()
     {
-        console.log("hideform")
+        
         setForm(false)
+    }
+    function removeAddr()
+    {
+        console.log(idAddr)
+        removeAddress(idAddr)
+    }
+    function setAddId(event,id)
+    {
+        event.target.checked=true
+        console.log(event.target.checked)
+        console.log(id)
+        setId(id)
+    }
+    function placeOrder()
+    {
+        if(idAddr.length>5)
+        {
+
+        }
     }
     return(<div>
         <header><h1>navBar</h1></header>
@@ -34,14 +62,14 @@ export function Checkout1()
         <div className="AddressBar">
         {AddressUser.map((val)=>
                 <ul key={val.id} className="AddressItems">
-                    <input   onClick={(e)=>selectRadio(e)}   type="radio"></input>
-                    <li>
+                    <input checked={val.id===idAddr} id="radioSelector"  onChange={(e)=>setAddId(e,val.id)} type="radio"></input>
+                    <li key={val.id}>
                         <p>{val.street}</p>
                         <p>{val.city}</p>
                         <p>{val.code}</p> 
                         <p>{val.country}</p>
                     </li>
-                    <button>Remove Address</button>
+                    <button onClick={()=>removeAddr()} style={{color:"white",backgroundColor:"#185464",padding:"10px 10px",borderRadius:"5px"}}>Remove Address</button>
                 </ul>)}
 
             <form onSubmit={(e)=>submitForm(e)} className="Form" style={{display:formShow?"block":"none"}}>
@@ -57,16 +85,22 @@ export function Checkout1()
                 </div>
          
             </form>
-            <button onClick={()=>hideForm()}>Cancel</button>
-        <div className="addBtn"><button  onClick={()=>showForm()}>Add new Address     </button></div>      
+          
+        <div className="addBtn">
+        <button style={{display:formShow?"block":"none"}} onClick={()=>hideForm()}>Cancel</button>
+            <button  onClick={()=>showForm()}>Add New Address     </button></div>      
         </div>
-       <div>
+       <div className="checkoutBox">
         {CartData.map((val)=>
-            <p><span>{val.title}{val.qty}$</span> <span>{val.price}</span></p>
+            <p><span>{val.title}     ({val.qty})$</span> <span>{val.price}</span></p>
         )}
         <hr></hr>
-        <div><span>Total Price</span><span>{totalPrice}$</span></div>
+        <div className="totalPrice"><span>Total Price : </span><span>{totalPrice}$</span></div>
+       <div className="addBtn">
+       <button onClick={()=>placeOrder()}>Place order</button>
+        </div > 
         </div>
+        
         </div>
     </div>)
 }
