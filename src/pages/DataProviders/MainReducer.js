@@ -43,9 +43,10 @@ export function MainProvider({ children }) {
         Cart: [],
         Whislist: [],
         CategoryFilter:[],
-    
+        SortBy:"empty",
         Rating:0,
-        Range:4000000,
+        Range:3800001,
+        Search:""
     };
 
     const [state, dispatcherMain] = useReducer(MainFun, MainData);
@@ -61,20 +62,20 @@ export function MainProvider({ children }) {
                     userName: action.payload.userName,
                 }
             return { ...state, isLoggedin: !state.isLoggedin,user:x };}
-       else if (action.type == "TestDetails") {
-        } else if (action.type == "getCart") {
+       else if (action.type === "TestDetails") {
+        } else if (action.type === "getCart") {
             return {...state,Cart:action.payload}
         } 
-        else if (action.type == "AddCartItem") {
+        else if (action.type === "AddCartItem") {
            
             return {...state,Cart:action.payload}
     }
-    else if(action.type=="AddWhislistItem")
+    else if(action.type==="AddWhislistItem")
     {   
         
         return {...state, Whislist:action.payload}
     }
-    else if(action.type=="CategoryData")
+    else if(action.type==="CategoryData")
     {
         return { ...state, Category: action.payload };
     }
@@ -95,17 +96,31 @@ export function MainProvider({ children }) {
     {
         return{...state,CategoryFilter:action.payload}
     }
-    else if(action.type=="setStar")
+    else if(action.type==="setStar")
     {
         return{...state,Rating:action.payload}
     }
-    else if(action.type=="setRange")
+    else if(action.type==="setRange")
     {
         return{...state,Range:action.payload}
     }
-    else if(action.type="cleanAll")
+    else if(action.type==="cleanAll")
     {
-        return{...state,Range:4000000,CategoryFilter:[],Rating:0}
+        return{...state,Range:4000000,CategoryFilter:[],Rating:0,SortBy:""}
+    }
+    else if(action.type==="lowToHigh")
+    {
+        console.log("helo")
+        return{...state,SortBy:action.payload[0],products:action.payload[1]}
+    }
+    else if(action.type==="highToLow")
+    {
+        console.log(action.payload[1])
+        return{...state,SortBy:action.payload[0],products:action.payload[1]}
+    }
+    else if(action.type=="searchQuery")
+    {
+        return{...state,CategoryFilter:action.payload}
     }
     // else if(action.type==="AddCate")
     // {
@@ -113,7 +128,7 @@ export function MainProvider({ children }) {
     // }
     return state;
 }
-
+console.log(state.SortBy)
 
 return (
     <MainContext.Provider
@@ -128,7 +143,9 @@ return (
             AddressUser:state.address,
             ProfileDetails:state.user,
             ratingFilter:state.Rating,
-            Range:state.Range
+            Range:state.Range,
+            SortBy:state.SortBy,
+            SearchQuery:state.Search
            
         }}
     >
