@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { MainContext } from "../DataProviders/MainReducer";
 import { v4 as uuid } from "uuid";
 import { FuncContext } from "../DataProviders/FuncCall";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./checkout.css"
 export function Checkout1()
 {
@@ -10,7 +12,6 @@ export function Checkout1()
     const totalPrice=CartData.reduce((acc,val)=>(acc+val.price),0)
     const [formShow,setForm]=useState(false)
     const [idAddr,setId]=useState("")
-    console.log(AddressUser,CartData)
   
     function showForm()
     {
@@ -46,14 +47,19 @@ export function Checkout1()
     {
         event.target.checked=true
         console.log(event.target.checked)
-        console.log(id)
         setId(id)
     }
     function placeOrder()
     {
-        if(idAddr.length>5)
+        if(idAddr.length>0 &&AddressUser.length)
         {
-
+            toast.success("Successfull place order",{
+                position:"bottom-right"})
+        }
+        else
+        {
+            toast.error("Please fill address",{
+                position:"bottom-right"})
         }
     }
     return(<div>
