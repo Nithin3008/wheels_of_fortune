@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { FuncContext } from "../DataProviders/FuncCall";
 import { MainContext } from "../DataProviders/MainReducer";
 export function Whislist1()
 {
     const {LoginId,WhisListData}=useContext(MainContext)
+    const {removeWhisListItem}=useContext(FuncContext)
     const nav=useNavigate()
     console.log(WhisListData)
     return(<div>
@@ -45,7 +46,7 @@ export function Whislist1()
                                 <p>Power: {val.HP}</p>
                                 <p>Price: {val.price}$</p>
                                 <button onClick={()=>nav("/Cart1")} className="buttonSty">Go to Cart </button>
-                                
+                                <button onClick={()=>removeWhisListItem(val._id)} className="buttonSty">Remove from cart </button>
                             </div>
 
                             </div>)}
