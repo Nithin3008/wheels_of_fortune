@@ -7,8 +7,8 @@ import "./product.css"
 export function Product1()
 {
     const nav=useNavigate()
-    const {LoginId,ProdDetailsCate, ProdDetails,ratingFilter,Range,Category,SortBy,SearchQuery}=useContext(MainContext)
-    const {pushCartData,itemInCart,shopCate,removeCate,setStars,setRange, clearAllFilter,hl,lh,searchItem,searchFilters}=useContext(FuncContext)
+    const {LoginId,ProdDetailsCate, ProdDetails,ratingFilter,Range,SortBy}=useContext(MainContext)
+    const {pushCartData,itemInCart,shopCate,removeCate,setStars,setRange, clearAllFilter,hl,lh,searchItem}=useContext(FuncContext)
     const productData=ProdDetailsCate.length===0?[...ProdDetails]:[...ProdDetailsCate]
     let prodData=productData
     let CateId=ProdDetailsCate.map((val)=>val.categoryName)
@@ -121,7 +121,7 @@ const searchBox=(event)=>{
                         <div key={val._id} className="productCards">
                                
                             <div  className="productImages">
-                                <img src={`${val.src}`}></img>
+                                <img onClick={()=>nav(`/ProductDetails1/${val._id}`)} src={`${val.src}`}></img>
                                 </div>
                             <div >
                                 <p>Title: {val.title}</p>
