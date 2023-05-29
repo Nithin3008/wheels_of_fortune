@@ -3,15 +3,16 @@ import { MainContext } from "../DataProviders/MainReducer";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 export const FuncContext=createContext()
 export function FuncProvider({ children }) {
 
-    const {CartData,ProdDetails,dispatcherMain,AddressUser,ProdDetailsCate}=useContext(MainContext)
-
+    const {CartData,ProdDetails,dispatcherMain,AddressUser,ProdDetailsCate,SearchQuery}=useContext(MainContext)
+    const nav=useNavigate()
     console.log("2 times")
   const pushCartData = async (id) => {
     const product = ProdDetails.find((val) => val._id == id);
-
+    
     
     const encodedToken = localStorage.getItem("token");
     const getCart = async () => {
@@ -244,6 +245,7 @@ function logoutUser()
 {
   localStorage.clear("token")
   dispatcherMain({type:"logoutUser"})
+  nav("/")
 }
 
 function starFilterSet(star)
@@ -282,8 +284,27 @@ function  clearAllFilter()
 {
   dispatcherMain({type:"cleanAll"})
 }
-
-
+function lh()
+{
+  console.log(ProdDetailsCate.length)
+  const x=ProdDetailsCate.length==0?ProdDetails.sort((a,b)=>a.price-b.price):ProdDetailsCate.sort((a,b)=>a.price-b.price)
+  console.log(x)
+  dispatcherMain({type:"lowToHigh",payload:["low2high",x]})
+}
+function hl()
+{
+  console.log(ProdDetailsCate.length)
+  const x=ProdDetailsCate.length==0?ProdDetails.sort((a,b)=>b.price-a.price):ProdDetailsCate.sort((a,b)=>b.price-a.price)
+  console.log(x)
+  dispatcherMain({type:"highToLow",payload:["high2low",x]})
+}
+function searchItem(items)
+{
+  const z=ProdDetails.filter((val)=>val.title.toLowerCase().includes(items))
+  console.log(z)
+  dispatcherMain({type:"searchQuery",payload:z})
+  nav("/Product1")
+}
 
 
 
@@ -292,7 +313,7 @@ function  clearAllFilter()
 
 
   return (<>
-  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem,AddAddress,removeAddress,starFilterSet,shopCate,removeCate,setStars,setRange,clearAllFilter}}>
+  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem,AddAddress,removeAddress,starFilterSet,shopCate,removeCate,setStars,setRange,clearAllFilter,hl,lh,searchItem,logoutUser}}>
     {children}
   </FuncContext.Provider>
   <ToastContainer />
