@@ -105,7 +105,7 @@ export function AuthProvider({children})
               <AuthContext.Provider value={{setUser,setHandler1}}>
               {children}
           </AuthContext.Provider>
-          <ToastContainer />
+         
               </div>
            );   
         
