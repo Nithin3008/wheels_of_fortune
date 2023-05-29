@@ -306,14 +306,43 @@ function searchItem(items)
   nav("/Product1")
 }
 
-
+const removeWhisListItem= async(id)=>
+{
+   const removeItem=async()=>
+   {
+    const encodedToken = localStorage.getItem("token");
+    try {
+        const response=await axios.delete(`/api/user/wishlist/${id}`,
+         {   
+        headers: {
+              authorization: encodedToken,
+            },
+        }
+       
+        
+        )
+        if(response.status==200)
+       {
+        toast.warning("Removed from Cart",{
+          position:"bottom-right"})
+        // dispatcherMain({type:"AddCartItem",payload:response.data.cart})
+        // pushWhislistData(id)
+       }
+       dispatcherMain({type:"AddWhislistItem",payload:response.data.wishlist})
+        
+    } catch (error) {
+        console.log("error")
+    }
+   }
+   removeItem()
+}
 
 
 
 
 
   return (<>
-  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem,AddAddress,removeAddress,starFilterSet,shopCate,removeCate,setStars,setRange,clearAllFilter,hl,lh,searchItem,logoutUser}}>
+  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem,AddAddress,removeAddress,starFilterSet,shopCate,removeCate,setStars,setRange,clearAllFilter,hl,lh,searchItem,logoutUser,removeWhisListItem}}>
     {children}
   </FuncContext.Provider>
   <ToastContainer />
