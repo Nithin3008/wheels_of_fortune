@@ -5,7 +5,6 @@ export function Profile1()
 {
     const {ProfileDetails}=useContext(MainContext)
     const {logoutUser}=useContext(FuncContext)
-    
     return(<div>
         <header>
             THis is profile
@@ -13,7 +12,7 @@ export function Profile1()
             <div>
                 <h1>My Account</h1>
                 <div>
-                   <p>Name: <span>{ProfileDetails.fname}</span></p>
+                   <p>Name: <span>{ProfileDetails.fName}</span></p>
                    <p>Username: <span>{ProfileDetails.userName}</span></p>
                    <button onClick={()=>logoutUser()}>Log out</button>
                 </div>
