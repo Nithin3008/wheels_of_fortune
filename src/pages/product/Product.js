@@ -7,10 +7,12 @@ import "./product.css"
 export function Product1()
 {
     const nav=useNavigate()
-    const {LoginId,ProdDetailsCate, ProdDetails,ratingFilter,Range,Category}=useContext(MainContext)
-    const {pushCartData,itemInCart,shopCate,removeCate,setStars,setRange, clearAllFilter}=useContext(FuncContext)
+    const {LoginId,ProdDetailsCate, ProdDetails,ratingFilter,Range,Category,SortBy,SearchQuery}=useContext(MainContext)
+    const {pushCartData,itemInCart,shopCate,removeCate,setStars,setRange, clearAllFilter,hl,lh,searchItem,searchFilters}=useContext(FuncContext)
     const productData=ProdDetailsCate.length===0?[...ProdDetails]:[...ProdDetailsCate]
     let prodData=productData
+    let CateId=ProdDetailsCate.map((val)=>val.categoryName)
+    console.log(CateId)
     if(ratingFilter>0)
     {
         prodData=prodData.filter((val)=>val.rating>=ratingFilter)
@@ -51,6 +53,10 @@ function cleanAll()
 {
     clearAllFilter()
 }
+const searchBox=(event)=>{
+    const item=(event.target.value).toLowerCase()
+    searchItem(item)
+  }
 
 
     return (
@@ -62,6 +68,8 @@ function cleanAll()
                             Wheels of <span style={{ color: "orangered" }}>Fortune</span>
                         </p>
                     </div>
+                    <input onChange={(e)=>searchBox(e)} type="search" placeholder="Search for your car"></input>
+
                     <nav>
                         <button onClick={()=>nav("/Login1")} className="buttonSty">
                             Login
@@ -80,14 +88,14 @@ function cleanAll()
                     <div className="producBoxFilters">
                         <div style={{display:"flex"}}><p style={{marginRight:"50px"}}>Filters</p><p onClick={()=>cleanAll()} style={{color:"#185464"}}>Clear</p></div>
                         <p>Price</p>
-                        <input onChange={(e)=>priceRange(e)} defaultValue={4000000} className="range" type="range" min="0" max="4000000"></input>
+                        <input onChange={(e)=>priceRange(e)} defaultValue={3800000} className="range" type="range" min="0" max="3800001"></input>
                         <div>
                             <p>Category</p>
                             <div className="categoryFilter">
-                            <label> <input  onClick={(e)=>setCategory(e,"Trucks")}  type="checkbox"></input> Truck</label>
-                            <label> <input  onClick={(e)=>setCategory(e,"Suv")} type="checkbox"></input> Suv</label>
-                            <label> <input  onClick={(e)=>setCategory(e,"EV")}  type="checkbox"></input> EV</label>
-                            <label> <input  onClick={(e)=>setCategory(e,"Super Cars")} type="checkbox"></input> Super Cars</label>
+                            <label> <input checked={CateId.includes("Trucks")}  onClick={(e)=>setCategory(e,"Trucks")}  type="checkbox"></input> Truck</label>
+                            <label> <input checked={CateId.includes("Suv")}  onClick={(e)=>setCategory(e,"Suv")} type="checkbox"></input> Suv</label>
+                            <label> <input checked={CateId.includes("EV")}  onClick={(e)=>setCategory(e,"EV")}  type="checkbox"></input> EV</label>
+                            <label> <input checked={CateId.includes("Super Cars")}  onClick={(e)=>setCategory(e,"Super Cars")} type="checkbox"></input> Super Cars</label>
                             </div>
                             
                         </div>
@@ -103,8 +111,8 @@ function cleanAll()
                         <div>
                             <p>Price Sort</p>
                             <div className="categoryFilter">
-                            <label><input type="radio"></input> low to high</label>
-                            <label><input type="radio"></input> high to low</label>
+                            <label><input checked={SortBy==="low2High"?true:false} onClick={()=>lh()} type="radio"></input> low to high</label>
+                            <label><input checked={SortBy==="high2Low"?true:false} onClick={()=>hl()} type="radio"></input> high to low</label>
                             </div>
                         </div>
                     </div>
