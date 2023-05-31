@@ -7,12 +7,12 @@ import "./product.css"
 export function Product1()
 {
     const nav=useNavigate()
-    const {LoginId,ProdDetailsCate, ProdDetails,ratingFilter,Range,SortBy}=useContext(MainContext)
-    const {pushCartData,itemInCart,shopCate,removeCate,setStars,setRange, clearAllFilter,hl,lh,searchItem}=useContext(FuncContext)
-    const productData=ProdDetailsCate.length===0?[...ProdDetails]:[...ProdDetailsCate]
+    const {LoginId,ProdDetailsCate, ProdDetails,dispatcherMain,ratingFilter,Range,SortBy}=useContext(MainContext)
+    const {pushCartData,itemInCart,shopCate,removeCate,setStars,setRange, clearAllFilter,hl,lh,searchItem,carsData}=useContext(FuncContext)
+    const productData=carsData
     let prodData=productData
-    let CateId=ProdDetailsCate.map((val)=>val.categoryName)
-    console.log(CateId)
+    // let CateId=ProdDetailsCate.map((val)=>val.categoryName)
+    // console.log(CateId)
     if(ratingFilter>0)
     {
         prodData=prodData.filter((val)=>val.rating>=ratingFilter)
@@ -35,12 +35,14 @@ export function Product1()
         console.log(event.target.value)
         const stars=event.target.value
         setStars(stars)
+        
    }
 
 function setCategory(event,cate)
 {
-    const str=event.target.checked
    
+    const str=event.target.checked
+  
     str?shopCate(cate):removeCate(cate)
 }
 function priceRange(event)
@@ -55,7 +57,8 @@ function cleanAll()
 }
 const searchBox=(event)=>{
     const item=(event.target.value).toLowerCase()
-    searchItem(item)
+    dispatcherMain({type:"searchQuery",payload:item})
+    
   }
 
 
@@ -92,10 +95,10 @@ const searchBox=(event)=>{
                         <div>
                             <p>Category</p>
                             <div className="categoryFilter">
-                            <label> <input checked={CateId.includes("Trucks")}  onClick={(e)=>setCategory(e,"Trucks")}  type="checkbox"></input> Truck</label>
-                            <label> <input checked={CateId.includes("Suv")}  onClick={(e)=>setCategory(e,"Suv")} type="checkbox"></input> Suv</label>
-                            <label> <input checked={CateId.includes("EV")}  onClick={(e)=>setCategory(e,"EV")}  type="checkbox"></input> EV</label>
-                            <label> <input checked={CateId.includes("Super Cars")}  onClick={(e)=>setCategory(e,"Super Cars")} type="checkbox"></input> Super Cars</label>
+                            <label> <input checked={ProdDetailsCate.includes("Trucks")}   onClick={(e)=>setCategory(e,"Trucks")}  type="checkbox"></input> Truck</label>
+                            <label> <input checked={ProdDetailsCate.includes("Suv")}  onClick={(e)=>setCategory(e,"Suv")} type="checkbox"></input> Suv</label>
+                            <label> <input checked={ProdDetailsCate.includes("EV")} onClick={(e)=>setCategory(e,"EV")}  type="checkbox"></input> EV</label>
+                            <label> <input checked={ProdDetailsCate.includes("Super Cars")}   onClick={(e)=>setCategory(e,"Super Cars")} type="checkbox"></input> Super Cars</label>
                             </div>
                             
                         </div>
@@ -128,7 +131,10 @@ const searchBox=(event)=>{
                                 <p>Manufacturer: {val.manufacturer}</p>
                                 <p>Power: {val.HP}</p>
                                 <p>Price: {val.price}$</p>
-                                <p><button disabled={itemInCart(val._id)==val._id} onClick={(e)=>AddToCart(e,val._id)}> {itemInCart(val._id)==val._id?"Go to Cart":"Add to cart"}</button></p>
+                               <p>
+                               <button disabled={itemInCart(val._id)==val._id} onClick={(e)=>AddToCart(e,val._id)}> {itemInCart(val._id)==val._id?"Go to Cart":"Add to cart"}</button>
+                                <button  onClick={""}> Add to Whislist</button>
+                               </p>
                             </div>
 
                             </div>)}
