@@ -7,7 +7,7 @@ import { AuthContext } from "../DataProviders/AuthProvider"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export function Login1() {
-  
+    console.log("login 2 times")
     const {setUser,setHandler1}=useContext(AuthContext)
     const details={userName:"",pwd:""}
   
@@ -63,6 +63,6 @@ export function Login1() {
             </div>
             
         </section>
-       <ToastContainer />
+  
     </div>)
 }
