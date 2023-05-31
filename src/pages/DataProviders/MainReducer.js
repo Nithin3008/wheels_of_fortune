@@ -120,7 +120,7 @@ export function MainProvider({ children }) {
     }
     else if(action.type=="searchQuery")
     {
-        return{...state,CategoryFilter:action.payload}
+        return{...state,Search:action.payload}
     }
     // else if(action.type==="AddCate")
     // {
@@ -128,7 +128,6 @@ export function MainProvider({ children }) {
     // }
     return state;
 }
-console.log(state.SortBy)
 
 return (
     <MainContext.Provider
