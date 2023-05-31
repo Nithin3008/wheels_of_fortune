@@ -103,7 +103,8 @@ export function Checkout1()
         <hr></hr>
         <div className="totalPrice"><span>Total Price : </span><span>{totalPrice}$</span></div>
        <div className="addBtn">
-       <button onClick={()=>placeOrder()}>Place order</button>
+       <button onClick={()=>totalPrice>0?placeOrder():toast.error("Please add items to checkout",{
+                position:"bottom-right"})}>Place order</button>
         </div > 
         </div>
         
