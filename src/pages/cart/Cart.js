@@ -47,7 +47,9 @@ export function Cart1()
             </nav>
           </div>
         </header>
+        {CartData.length<=0?<h1 style={{textAlign:"center",padding:"10px 10px",margin:"20px 20px"}}>Cart is Empty</h1>:""}
         <div className="CartBox">
+         
             <div className="cartItems">
                 {CartData.map((val)=>
                         <div key={val.title} className="productCards">
@@ -76,7 +78,7 @@ export function Cart1()
                        <div > {CartData.map(({title,price,qty})=><p>{title}- {qty*price}$</p>)}</div>
                         <hr></hr>
                        <div >Total Price: {CartData.reduce((acc,{price,qty})=>((qty*price)+acc),0)}$</div>
-                       <button onClick={()=>nav("/Checkout1")} className="buttonSty">Proceed with checkout</button>
+                       <button onClick={()=>CartData.length>0?nav("/Checkout1"):""} className="buttonSty">Proceed with checkout</button>
                     </div>
             </div>
            
