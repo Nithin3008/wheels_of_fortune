@@ -1,0 +1,16 @@
+.LoaderClass
+{
+    text-align: center;
+    /* z-index: 1; */
+    /* margin-top: 10%;
+    margin-left: 35%; */
+    position: fixed;
+    background-color: white;
+    opacity: 0.5;
+    height: 100%;
+    width: 100%;
+}
+.LoaderClass div
+{
+    text-align: center;
+}
