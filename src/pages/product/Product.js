@@ -7,8 +7,8 @@ import "./product.css"
 export function Product1()
 {
     const nav=useNavigate()
-    const {LoginId,ProdDetailsCate, ProdDetails,dispatcherMain,ratingFilter,Range,SortBy}=useContext(MainContext)
-    const {pushCartData,itemInCart,shopCate,removeCate,setStars,setRange, clearAllFilter,hl,lh,searchItem,carsData}=useContext(FuncContext)
+    const {LoginId,ProdDetailsCate,dispatcherMain,ratingFilter,Range,SortBy}=useContext(MainContext)
+    const {pushCartData,itemInCart,itemInWishList,shopCate,pushWhislistData,removeCate,setStars,setRange, clearAllFilter,hl,lh,removeWhisListItem,carsData}=useContext(FuncContext)
     const productData=carsData
     let prodData=productData
     // let CateId=ProdDetailsCate.map((val)=>val.categoryName)
@@ -132,8 +132,8 @@ const searchBox=(event)=>{
                                 <p>Power: {val.HP}</p>
                                 <p>Price: {val.price}$</p>
                                <p>
-                               <button disabled={itemInCart(val._id)==val._id} onClick={(e)=>AddToCart(e,val._id)}> {itemInCart(val._id)==val._id?"Go to Cart":"Add to cart"}</button>
-                                <button  onClick={""}> Add to Whislist</button>
+                               <button disabled={itemInCart(val._id)===val._id} onClick={(e)=>AddToCart(e,val._id)}> {itemInCart(val._id)==val._id?"Go to Cart":"Add to cart"}</button>
+                                <button  onClick={()=>itemInWishList(val._id)===val._id?removeWhisListItem(val._id):pushWhislistData(val._id)}>{itemInWishList(val._id)===val._id?"Remove From Wishlist":"Add to WishList"}</button>
                                </p>
                             </div>
 
