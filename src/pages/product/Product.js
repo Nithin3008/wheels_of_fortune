@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { FuncContext } from "../DataProviders/FuncCall";
 import { MainContext } from "../DataProviders/MainReducer";
+import { Loader } from "../../components/spinner";
 import "./product.css"
 export function Product1()
 {
@@ -64,6 +65,7 @@ const searchBox=(event)=>{
 
     return (
       <div>
+        {carsData.length<=0?<Loader></Loader>:""}
             <header className="topSection">
                 <div className="topSectionBox">
                     <div>
@@ -133,7 +135,7 @@ const searchBox=(event)=>{
                                 <p>Price: {val.price}$</p>
                                <p>
                                <button disabled={itemInCart(val._id)===val._id} onClick={(e)=>AddToCart(e,val._id)}> {itemInCart(val._id)==val._id?"Go to Cart":"Add to cart"}</button>
-                                <button  onClick={()=>itemInWishList(val._id)===val._id?removeWhisListItem(val._id):pushWhislistData(val._id)}>{itemInWishList(val._id)===val._id?"Remove From Wishlist":"Add to WishList"}</button>
+                                <button  onClick={()=>LoginId?itemInWishList(val._id)===val._id?removeWhisListItem(val._id):pushWhislistData(val._id):nav("/Login1")}>{itemInWishList(val._id)===val._id?"Remove From Wishlist":"Add to WishList"}</button>
                                </p>
                             </div>
 
