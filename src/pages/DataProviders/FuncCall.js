@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export const FuncContext=createContext()
 export function FuncProvider({ children }) {
 
-    const {CartData,ProdDetails,dispatcherMain,AddressUser,ProdDetailsCate,SearchQuery}=useContext(MainContext)
+    const {CartData,ProdDetails,dispatcherMain,AddressUser,ProdDetailsCate,SearchQuery, WhisListData}=useContext(MainContext)
     const nav=useNavigate()
     console.log("2 times")
   const pushCartData = async (id) => {
@@ -66,7 +66,6 @@ export function FuncProvider({ children }) {
 const itemInCart =(id)=>
 {
   const product = CartData.find((val) => val._id === id?val.qty:false);
-  // console.log(product)
   
   if(product===undefined)
   {
@@ -80,9 +79,24 @@ const itemInCart =(id)=>
   }
 }
 
+const itemInWishList =(id)=>
+{
+  const product =  WhisListData.find((val) => val._id === id?val.id:false);
+  console.log(WhisListData[0])
+  
+  if(product===undefined)
+  {
+    console.log("hello")
+    return 0
+  }  
+  else
+  {
+    console.log(id)
+    return id
+  }
+}
 const pushWhislistData = async (id) => {
-    const product = CartData.find((val) => val._id == id);
-
+    const product = ProdDetails.find((val) => val._id == id);
     const encodedToken = localStorage.getItem("token");
     const getWhislist = async () => {
       try {
@@ -97,7 +111,6 @@ const pushWhislistData = async (id) => {
             },
           }
         );
-        console.log(response.data);
         if (response.status === 201) {
           toast.success("Added to Whislist",{
             position:"bottom-right"})
@@ -333,7 +346,7 @@ const removeWhisListItem= async(id)=>
         )
         if(response.status==200)
        {
-        toast.warning("Removed from Cart",{
+        toast.warning("Removed from Wishlist",{
           position:"bottom-right"})
         // dispatcherMain({type:"AddCartItem",payload:response.data.cart})
         // pushWhislistData(id)
@@ -352,7 +365,7 @@ const removeWhisListItem= async(id)=>
 
 
   return (<>
-  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem,AddAddress,removeAddress,starFilterSet,shopCate,removeCate,setStars,setRange,clearAllFilter,hl,lh,logoutUser,removeWhisListItem,carsData}}>
+  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem,AddAddress,removeAddress,starFilterSet,shopCate,removeCate,setStars,setRange,clearAllFilter,hl,lh,logoutUser,removeWhisListItem,carsData,itemInWishList}}>
     {children}
   </FuncContext.Provider>
   <ToastContainer />
