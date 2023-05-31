@@ -5,8 +5,14 @@ import { MainContext } from "../DataProviders/MainReducer";
 export function Whislist1()
 {
     const {LoginId,WhisListData}=useContext(MainContext)
-    const {removeWhisListItem}=useContext(FuncContext)
+    const {removeWhisListItem,pushCartData}=useContext(FuncContext)
     const nav=useNavigate()
+    function cartHanler(id)
+    {
+      pushCartData(id)
+      removeWhisListItem(id)
+      
+    }
     console.log(WhisListData)
     return(<div>
          <header className="topSection">
@@ -45,7 +51,7 @@ export function Whislist1()
                                 <p>Manufacturer: {val.manufacturer}</p>
                                 <p>Power: {val.HP}</p>
                                 <p>Price: {val.price}$</p>
-                                <button onClick={()=>nav("/Cart1")} className="buttonSty">Go to Cart </button>
+                                <button onClick={()=>cartHanler(val._id)} className="buttonSty">Add to Cart </button>
                                 <button onClick={()=>removeWhisListItem(val._id)} className="buttonSty">Remove from cart </button>
                             </div>
 
