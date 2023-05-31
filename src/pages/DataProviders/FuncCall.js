@@ -12,7 +12,7 @@ export function FuncProvider({ children }) {
     console.log("2 times")
   const pushCartData = async (id) => {
     const product = ProdDetails.find((val) => val._id == id);
-    
+    console.log(product)
     
     const encodedToken = localStorage.getItem("token");
     const getCart = async () => {
@@ -255,20 +255,18 @@ function starFilterSet(star)
 
 function shopCate(cate)
 {
-  console.log(cate,ProdDetailsCate)
-  
-  const x=ProdDetailsCate.filter((val)=>val.categoryName!==cate)
- 
-  const y=ProdDetails.filter((val)=>val.categoryName===cate)
-  const z=x.length==0?y:[...x,...y]
+  // console.log(cate)
 
+  const z=ProdDetailsCate.length===0?[cate]:[...ProdDetailsCate,cate]
+  console.log(z)
   
   dispatcherMain({type:"shopProd",payload:z})
   
 }
 function removeCate(cate)
 {
-  const x=ProdDetailsCate.filter((val)=>val.categoryName!==cate)
+  console.log(cate)
+  const x=ProdDetailsCate.filter((val)=>val!==cate)
   console.log(x)
   dispatcherMain({type:"shopProd",payload:x})
 }
@@ -284,6 +282,24 @@ function  clearAllFilter()
 {
   dispatcherMain({type:"cleanAll"})
 }
+function ApplyFilters()
+{
+  
+  let newData=ProdDetails
+  if(SearchQuery!=="")
+  {
+    newData=newData.filter((val)=>val.title.toLowerCase().includes(SearchQuery))
+  }
+  if(ProdDetailsCate.length>0)
+  {
+    console.log(ProdDetailsCate)
+    newData=newData.filter((val)=>ProdDetailsCate.find((item)=>item===val.categoryName))
+    console.log(newData)
+  }
+  
+  return newData
+}
+let carsData=ApplyFilters()
 function lh()
 {
   console.log(ProdDetailsCate.length)
@@ -298,13 +314,7 @@ function hl()
   console.log(x)
   dispatcherMain({type:"highToLow",payload:["high2low",x]})
 }
-function searchItem(items)
-{
-  const z=ProdDetails.filter((val)=>val.title.toLowerCase().includes(items))
-  console.log(z)
-  dispatcherMain({type:"searchQuery",payload:z})
-  nav("/Product1")
-}
+
 
 const removeWhisListItem= async(id)=>
 {
@@ -342,7 +352,7 @@ const removeWhisListItem= async(id)=>
 
 
   return (<>
-  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem,AddAddress,removeAddress,starFilterSet,shopCate,removeCate,setStars,setRange,clearAllFilter,hl,lh,searchItem,logoutUser,removeWhisListItem}}>
+  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem,AddAddress,removeAddress,starFilterSet,shopCate,removeCate,setStars,setRange,clearAllFilter,hl,lh,logoutUser,removeWhisListItem,carsData}}>
     {children}
   </FuncContext.Provider>
   <ToastContainer />
