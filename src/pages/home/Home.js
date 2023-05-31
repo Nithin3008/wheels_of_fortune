@@ -1,16 +1,30 @@
-// import { useEffect, useState } from "react"
+
 import { Link,useNavigate } from "react-router-dom";
-import { CategoryData } from "../DataProviders/CategoryProv";
-import { useContext } from "react";
+
+import { useContext, useEffect } from "react";
 import { MainContext } from "../DataProviders/MainReducer";
+import { FuncContext } from "../DataProviders/FuncCall";
 import "./home.css";
+import { ToastContainer } from "react-toastify";
+import { Loader } from "../../components/spinner";
 export function Home1() {
-  const { cateData } = useContext(CategoryData);
-  console.log(localStorage.getItem("token"))
+
+  console.log("home 3 times")
+
   const nav=useNavigate()
-  const {LoginId}=useContext(MainContext)
+  const {LoginId,Category,dispatcherMain}=useContext(MainContext)
+  const {shopCate}=useContext(FuncContext)
+  const shopProd=(ct)=>{
+    shopCate(ct)
+    nav("/Product1")}
+  const searchBox=(event)=>{
+    const item=(event.target.value).toLowerCase()
+    dispatcherMain({type:"searchQuery",payload:item})
+  }
   return (
     <div>
+       {Category.length<=0?<Loader></Loader>:""}
+       {/* <Loader></Loader> */}
       <div className="mainBox">
         <header className="topSection">
           <div className="topSectionBox">
@@ -19,6 +33,7 @@ export function Home1() {
                 Wheels of <span style={{ color: "orangered" }}>Fortune</span>
               </p>
             </div>
+            <input onChange={(e)=>searchBox(e)} type="search" placeholder="Search for your car"></input>
             <nav>
               <button onClick={()=>nav("/Login1")}  className="navButton">
                 Login
@@ -29,6 +44,9 @@ export function Home1() {
               <button onClick={()=>LoginId?nav("/Whislist1"):""}  className="navButton">
                 Whislist
               </button>
+              <button onClick={()=>LoginId?nav("/Profile1"):nav("/Login1")}  className="navButton">
+                Profile
+              </button>
             </nav>
           </div>
         </header>
@@ -36,13 +54,12 @@ export function Home1() {
           <div className="contentBox">
             <div>
               <p className="heading1 contentHeading">
-                Welcome to Wheels of{" "}
+                 Welcome to Wheels of{" "}
                 <span style={{ color: "orangered" }}>Fortune</span>
               </p>
               <p className="heading1">
-                You can your purchase car which suits you
+                You can purchase car which suits you
               </p><br></br>
-              <Link  to="/Product1/All" style={{textDecoration:"none"}} className="buttonSty">Shop Now</Link>
             </div>
             <div>
               <img
@@ -58,15 +75,15 @@ export function Home1() {
         </section>
         <section style={{ marginTop: "10px" }}>
           <div className="categoryBox">
-            {cateData.map((val) => (
-              <div className="categoryChild">
+            {Category.map((val) => (
+              <div key={val._id} className="categoryChild">
                 <div>
                   <img className="categoryImages" src={`${val.src}`}></img>
                 </div>
                 <div>
                   <p className="categoryHeading catHead">{val.categoryName}</p>
                   <p className="categoryHeading">{val.description}</p><br></br>
-                 <p style={{textAlign:"center"}}> <Link to={`/Product1/${val.categoryName}`}className="buttonSty ">Shop Now</Link></p>
+                 <p style={{textAlign:"center"}}> <button onClick={()=>shopProd(val.categoryName)} className="buttonSty ">Shop Now</button></p>
                 </div>
               </div>
             ))}
@@ -97,6 +114,7 @@ export function Home1() {
           </div>
         </footer>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 }
