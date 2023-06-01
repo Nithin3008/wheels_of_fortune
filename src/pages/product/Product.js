@@ -5,6 +5,7 @@ import { FuncContext } from "../DataProviders/FuncCall";
 import { MainContext } from "../DataProviders/MainReducer";
 import { Loader } from "../../components/spinner";
 import "./product.css"
+import { NavBar } from "../../components/navBar/nav";
 export function Product1()
 {
     const nav=useNavigate()
@@ -56,38 +57,10 @@ function cleanAll()
 {
     clearAllFilter()
 }
-const searchBox=(event)=>{
-    const item=(event.target.value).toLowerCase()
-    dispatcherMain({type:"searchQuery",payload:item})
-    
-  }
-
-
     return (
       <div>
         {carsData.length<=0?<Loader></Loader>:""}
-            <header className="topSection">
-                <div className="topSectionBox">
-                    <div>
-                        <p className="heading1">
-                            Wheels of <span style={{ color: "orangered" }}>Fortune</span>
-                        </p>
-                    </div>
-                    <input onChange={(e)=>searchBox(e)} type="search" placeholder="Search for your car"></input>
-
-                    <nav>
-                        <button onClick={()=>nav("/Login1")} className="buttonSty">
-                            Login
-                        </button>
-                        <button onClick={()=>LoginId?nav("/Cart1"):""} className="buttonSty">
-                            Cart
-                        </button>
-                        <button onClick={()=>LoginId?nav("/WhisList1"):""} className="buttonSty">
-                            Whislist
-                        </button>
-                    </nav>
-                </div>
-            </header>
+            <NavBar></NavBar>
             <section>
                 <div className="productBox">
                     <div className="producBoxFilters">
