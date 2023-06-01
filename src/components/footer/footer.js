@@ -17,9 +17,9 @@ export function Footer()
             </div>
             <div className="FooterLinks">
                 <p>Connect</p>
-              <a href="https://github.com/Nithin3008/wheels_of_fortune">  <img src={pic1}></img></a>
-              <a href="https://www.linkedin.com/in/nithindevathi-3008/"><img src={pic2}></img></a>
-              <a href="https://twitter.com/Nithin_Nikhil12"><img src={pic3}></img></a>
+              <a href="https://github.com/Nithin3008/wheels_of_fortune">  <img src={pic1} alt="Github"></img></a>
+              <a href="https://www.linkedin.com/in/nithindevathi-3008/"><img src={pic2} alt="Linkedin"></img></a>
+              <a href="https://twitter.com/Nithin_Nikhil12"><img src={pic3} alt="twitter"></img></a>
 
             </div>
 
