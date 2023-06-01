@@ -1,15 +1,11 @@
 .MainBox
 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    margin-top: 50px;
+}
 
-}
-.AddressBar
-{
-    max-width: 50%;
-    margin: auto;
-}
 .AddressItems
 {
     display: flex;
@@ -80,13 +76,6 @@
     border-radius: 5px;
     padding: 10px 10px;
     width: 200px;
-}
-.checkoutBox
-{
-    max-width: 30%;
-    margin: auto;
-    padding: 10px 10px;
-    font-size: 20px;
 }
 .checkoutBox .totalPrice
 {
