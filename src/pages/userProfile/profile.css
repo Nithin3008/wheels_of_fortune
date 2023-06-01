@@ -33,3 +33,13 @@
     font-size: 25px;
     font-weight: 500;
 }
+.logoutBtn
+{
+    background-color: red;
+    color: white;
+    padding: 10px 10px;
+    border: 0;
+    font-size: 20px;
+    border-radius: 5px;
+
+}
