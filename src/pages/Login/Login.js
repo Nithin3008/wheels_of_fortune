@@ -53,6 +53,5 @@ export function Login1() {
             </div>
             
         </section>
-  
     </div>)
 }
