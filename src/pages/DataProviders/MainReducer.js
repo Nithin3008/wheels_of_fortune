@@ -51,10 +51,10 @@ export function MainProvider({ children }) {
 
     const [state, dispatcherMain] = useReducer(MainFun, MainData);
     function MainFun(state, action) {
-        if (action.type == "AddingProd") {
+        if (action.type === "AddingProd") {
             return { ...state, products: action.payload };
         } 
-        else if (action.type == "LoginHandler") {
+        else if (action.type === "LoginHandler") {
             console.log(action.payload)
                 const x={
                     fName: action.payload.fName,
@@ -118,7 +118,7 @@ export function MainProvider({ children }) {
         console.log(action.payload[1])
         return{...state,SortBy:action.payload}
     }
-    else if(action.type=="searchQuery")
+    else if(action.type==="searchQuery")
     {
         return{...state,Search:action.payload}
     }
