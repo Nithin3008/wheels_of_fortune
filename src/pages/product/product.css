@@ -13,12 +13,6 @@
     --font1-clr:#185464;
 }
 
-
-.heading1
-{
-    font-size: 25px;
-    font-weight: 700;
-}
 .productBox
 {
     display: flex;
