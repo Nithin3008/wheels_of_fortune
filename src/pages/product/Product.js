@@ -11,10 +11,7 @@ export function Product1()
     const nav=useNavigate()
     const {LoginId,ProdDetailsCate,dispatcherMain,ratingFilter,Range,SortBy}=useContext(MainContext)
     const {pushCartData,itemInCart,itemInWishList,shopCate,pushWhislistData,removeCate,setStars,setRange, clearAllFilter,hl,lh,removeWhisListItem,carsData}=useContext(FuncContext)
-    const productData=carsData
-    let prodData=productData
-    // let CateId=ProdDetailsCate.map((val)=>val.categoryName)
-    // console.log(CateId)
+    let prodData=carsData
     if(ratingFilter>0)
     {
         prodData=prodData.filter((val)=>val.rating>=ratingFilter)
@@ -96,7 +93,7 @@ function cleanAll()
                     </div>
                     <div className="producBoxCards">
                         {prodData.map((val)=>
-                        <div key={val._id} className="productCards">
+                        <div key={val._id} className="prdCards">
                                
                             <div  className="productImages">
                                 <img onClick={()=>nav(`/ProductDetails1/${val._id}`)} src={`${val.src}`}></img>
