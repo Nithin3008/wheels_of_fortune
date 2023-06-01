@@ -1,7 +1,7 @@
 
-import { Link,useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { MainContext } from "../DataProviders/MainReducer";
 import { FuncContext } from "../DataProviders/FuncCall";
 import "./home.css";
@@ -41,7 +41,7 @@ export function Home1() {
               <img
                 className="images"
                 src="https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/Category/suv.jpg?raw=true"
-              ></img>
+                alt="carImages"></img>
             </div>
           </div>
         </section>
@@ -54,7 +54,7 @@ export function Home1() {
             {Category.map((val) => (
               <div key={val._id} className="categoryChild">
                 <div>
-                  <img className="categoryImages" src={`${val.src}`}></img>
+                  <img className="categoryImages" src={`${val.src}`} alt="carImages"></img>
                 </div>
                 <div>
                   <p className="categoryHeading catHead">{val.categoryName}</p>
