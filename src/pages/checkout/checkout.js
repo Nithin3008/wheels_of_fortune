@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { MainContext } from "../DataProviders/MainReducer";
 import { v4 as uuid } from "uuid";
 import { FuncContext } from "../DataProviders/FuncCall";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import { NavBar } from "../../components/navBar/nav";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
