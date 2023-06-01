@@ -5,7 +5,7 @@ import { NavBar } from "../../components/navBar/nav";
 import "./wishList.css"
 export function Whislist1() {
   const { WhisListData } = useContext(MainContext);
-  const { removeWhisListItem, pushCartData } = useContext(FuncContext);
+  const { removeWhisListItem, pushCartData,itemInWishList,itemInCart } = useContext(FuncContext);
   function cartHanler(id) {
     pushCartData(id);
     removeWhisListItem(id);
@@ -25,14 +25,14 @@ export function Whislist1() {
               <p>Manufacturer: {val.manufacturer}</p>
               <p>Power: {val.HP}</p>
               <p>Price: {val.price}$</p>
-              <button onClick={() => cartHanler(val._id)} className="wishBtn">
+              <button disabled={itemInCart(val._id)===val._id} onClick={() => cartHanler(val._id)} className="wishBtn">
                 Add to Cart{" "}
               </button>
               <button
                 onClick={() => removeWhisListItem(val._id)}
                 className="wishBtn"
               >
-                Remove from cart{" "}
+                Remove from WishList{" "}
               </button>
             </div>
           </div>
