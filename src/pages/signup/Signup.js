@@ -2,6 +2,7 @@ import "./signup.css";
 import { useContext} from "react"
 import { AuthContext } from "../DataProviders/AuthProvider"
 import { MainContext } from "../DataProviders/MainReducer"
+import { NavBar } from "../../components/navBar/nav";
 export function Signup1() {
   const {setHandler1,setUser}=useContext(AuthContext)
   const {dispatcherMain}=useContext(MainContext)
@@ -22,20 +23,7 @@ export function Signup1() {
   }
   return (
     <div>
-      <header className="topSection">
-        <div className="topSectionBox">
-          <div>
-            <p className="heading1">
-              Wheels of <span style={{ color: "orangered" }}>Fortune</span>
-            </p>
-          </div>
-          <nav>
-            <button>Login</button>
-            <button className="navButton">Cart</button>
-            <button className="navButton">Whislist</button>
-          </nav>
-        </div>
-      </header>
+      <NavBar></NavBar>
       <section className="contentBox1">
         <div className="signBox1">
           <p className="heading1">Sign up!</p>

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { FuncContext } from "../DataProviders/FuncCall";
 import { MainContext } from "../DataProviders/MainReducer";
+import { NavBar } from "../../components/navBar/nav";
 export function Whislist1()
 {
     const {LoginId,WhisListData}=useContext(MainContext)
@@ -15,30 +16,8 @@ export function Whislist1()
     }
     console.log(WhisListData)
     return(<div>
-         <header className="topSection">
-          <div className="topSectionBox">
-            <div>
-              <p className="heading1">
-                Wheels of <span style={{ color: "orangered" }}>Fortune</span>
-              </p>
-            </div>
-            <nav>
-              <button onClick={()=>nav("/Login1")}  className="navButton">
-                Login
-              </button>
-              <button onClick={()=>LoginId?nav("/Product1"):""}  className="navButton">
-                Explore
-              </button>
-              <button onClick={()=>LoginId?nav("/Cart1"):""}  className="navButton">
-                Cart
-              </button>
-              <button onClick={()=>LoginId?nav("/Whislist1"):""}  className="navButton">
-                Whislist
-              </button>
-            </nav>
-          </div>
-        </header>
-        <div>
+         
+       <NavBar></NavBar>
         <div className="cartItems">
                 {WhisListData.map((val)=>
                         <div key={val.title} className="productCards">
@@ -59,5 +38,5 @@ export function Whislist1()
         </div>
         
     </div>
-    </div>)
+    )
 }
