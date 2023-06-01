@@ -10,6 +10,7 @@
     --main-clr:#f0f0f2;
     --bg-clr: #4A4A4B;
     --font-clr:orangered;
+    --font-clr2:#185464
 }
 
 
@@ -36,18 +37,7 @@
 {
     padding: 15px 15px;
 }
-.navButton
-{
-   background-color: white;
-   border: 0;
-    font-weight: 600;
-    padding: 10px 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    color: var(--bg-clr);
-   
-}
+
 .buttonSty
 {
     border: 0;
@@ -127,43 +117,4 @@
     max-width: 50%;
     margin: auto;
     text-align: center;
-}
-footer
-{
-    height:150px;
-    margin: 10px 0px;
-    padding: 10px 10px;
-    background-color:var(--main-clr);
-    
-}
-.footerSec
-{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 40px;
-}
-.secBox1 p
-{
-    padding: 5px 5px;
-}
-.secBox2 li
-{
-    
-    list-style: none;
-    display: inline-block;
-    padding: 5px 4px;
-    margin-right: 5px;
-}
-.secBox2 a
-{
-    color: #185464;
-    text-decoration: none;
-    font-size: 20px;
-    padding: 5px 4px;
-
-}
-.secBox2 a:hover
-{
-    color: var(--font-clr);
 }
