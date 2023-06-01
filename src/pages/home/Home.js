@@ -7,49 +7,24 @@ import { FuncContext } from "../DataProviders/FuncCall";
 import "./home.css";
 import { ToastContainer } from "react-toastify";
 import { Loader } from "../../components/spinner";
+import { NavBar } from "../../components/navBar/nav";
 export function Home1() {
 
   console.log("home 3 times")
 
   const nav=useNavigate()
-  const {LoginId,Category,dispatcherMain}=useContext(MainContext)
+  const {Category}=useContext(MainContext)
   const {shopCate}=useContext(FuncContext)
   const shopProd=(ct)=>{
     shopCate(ct)
     nav("/Product1")}
-  const searchBox=(event)=>{
-    const item=(event.target.value).toLowerCase()
-    dispatcherMain({type:"searchQuery",payload:item})
-  }
   return (
     <div>
+      <NavBar></NavBar>
        {Category.length<=0?<Loader></Loader>:""}
        {/* <Loader></Loader> */}
       <div className="mainBox">
-        <header className="topSection">
-          <div className="topSectionBox">
-            <div>
-              <p className="heading1">
-                Wheels of <span style={{ color: "orangered" }}>Fortune</span>
-              </p>
-            </div>
-            <input onChange={(e)=>searchBox(e)} type="search" placeholder="Search for your car"></input>
-            <nav>
-              <button onClick={()=>nav("/Login1")}  className="navButton">
-                Login
-              </button>
-              <button onClick={()=>LoginId?nav("/Cart1"):""}  className="navButton">
-                Cart
-              </button>
-              <button onClick={()=>LoginId?nav("/Whislist1"):""}  className="navButton">
-                Whislist
-              </button>
-              <button onClick={()=>LoginId?nav("/Profile1"):nav("/Login1")}  className="navButton">
-                Profile
-              </button>
-            </nav>
-          </div>
-        </header>
+      
         <section className="contentContainer">
           <div className="contentBox">
             <div>
