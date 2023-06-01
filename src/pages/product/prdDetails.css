@@ -47,4 +47,5 @@
     padding: 8px 8px;
     color: var(--main-clr);
     border-radius: 5px;
+    cursor: pointer;
 }
