@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { useNavigate } from "react-router-dom";
 
 import { FuncContext } from "../DataProviders/FuncCall";
@@ -10,7 +10,7 @@ export function Product1()
 {
     const nav=useNavigate()
     const {LoginId,ProdDetailsCate,dispatcherMain,ratingFilter,Range,SortBy}=useContext(MainContext)
-    const {pushCartData,itemInCart,itemInWishList,shopCate,pushWhislistData,removeCate,setStars,setRange, clearAllFilter,hl,lh,removeWhisListItem,carsData}=useContext(FuncContext)
+    const {pushCartData,itemInCart,itemInWishList,shopCate,pushWhislistData,removeCate,setStars,setRange, clearAllFilter,removeWhisListItem,carsData}=useContext(FuncContext)
     let prodData=carsData
     if(ratingFilter>0)
     {
@@ -77,10 +77,10 @@ function cleanAll()
                         <div>
                             <p >Rating</p>
                             <div className="categoryFilter">
-                            <label> <input checked={ratingFilter==1?true:false} value={1} onClick={(e)=>setRating(e)} type="radio"></input> 1 Star+</label>
-                            <label> <input checked={ratingFilter==2?true:false} value={2} onClick={(e)=>setRating(e)} type="radio"></input> 2 Star+</label>
-                            <label> <input checked={ratingFilter==3?true:false} value={3} onClick={(e)=>setRating(e)} type="radio"></input> 3 Star+</label>
-                            <label> <input checked={ratingFilter==4?true:false} value={4} onClick={(e)=>setRating(e)} type="radio"></input> 4 Star+</label>
+                            <label> <input checked={ratingFilter===1?true:false} value={1} onClick={(e)=>setRating(e)} type="radio"></input> 1 Star+</label>
+                            <label> <input checked={ratingFilter===2?true:false} value={2} onClick={(e)=>setRating(e)} type="radio"></input> 2 Star+</label>
+                            <label> <input checked={ratingFilter===3?true:false} value={3} onClick={(e)=>setRating(e)} type="radio"></input> 3 Star+</label>
+                            <label> <input checked={ratingFilter===4?true:false} value={4} onClick={(e)=>setRating(e)} type="radio"></input> 4 Star+</label>
                             </div>
                         </div>
                         <div>
@@ -96,7 +96,7 @@ function cleanAll()
                         <div key={val._id} className="prdCards">
                                
                             <div  className="productImages">
-                                <img onClick={()=>nav(`/ProductDetails1/${val._id}`)} src={`${val.src}`}></img>
+                                <img onClick={()=>nav(`/ProductDetails1/${val._id}`)} src={`${val.src}`} alt="carImages"></img>
                                 </div>
                             <div >
                                 <p>Title: {val.title}</p>
@@ -104,7 +104,7 @@ function cleanAll()
                                 <p>Power: {val.HP}</p>
                                 <p>Price: {val.price}$</p>
                                <p>
-                               <button disabled={itemInCart(val._id)===val._id} onClick={(e)=>AddToCart(e,val._id)}> {itemInCart(val._id)==val._id?"Go to Cart":"Add to cart"}</button>
+                               <button disabled={itemInCart(val._id)===val._id} onClick={(e)=>AddToCart(e,val._id)}> {itemInCart(val._id)===val._id?"Go to Cart":"Add to cart"}</button>
                                 <button  onClick={()=>LoginId?itemInWishList(val._id)===val._id?removeWhisListItem(val._id):pushWhislistData(val._id):nav("/Login1")}>{itemInWishList(val._id)===val._id?"Remove From Wishlist":"Add to WishList"}</button>
                                </p>
                             </div>
