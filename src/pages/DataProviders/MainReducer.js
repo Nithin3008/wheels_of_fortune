@@ -111,12 +111,12 @@ export function MainProvider({ children }) {
     else if(action.type==="lowToHigh")
     {
         console.log("helo")
-        return{...state,SortBy:action.payload[0],products:action.payload[1]}
+        return{...state,SortBy:action.payload}
     }
     else if(action.type==="highToLow")
     {
         console.log(action.payload[1])
-        return{...state,SortBy:action.payload[0],products:action.payload[1]}
+        return{...state,SortBy:action.payload}
     }
     else if(action.type=="searchQuery")
     {
