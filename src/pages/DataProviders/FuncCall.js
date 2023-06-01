@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export const FuncContext=createContext()
 export function FuncProvider({ children }) {
 
-    const {CartData,ProdDetails,dispatcherMain,AddressUser,ProdDetailsCate,SearchQuery, WhisListData}=useContext(MainContext)
+    const {CartData,ProdDetails,dispatcherMain,AddressUser,ProdDetailsCate,SearchQuery, WhisListData,SortBy}=useContext(MainContext)
     const nav=useNavigate()
     console.log("2 times")
   const pushCartData = async (id) => {
@@ -309,24 +309,20 @@ function ApplyFilters()
     newData=newData.filter((val)=>ProdDetailsCate.find((item)=>item===val.categoryName))
     console.log(newData)
   }
+  if(SortBy==="low2high")
+  {
+    newData=newData.sort((a,b)=>a.price-b.price)
+  }
+  if(SortBy==="high2low")
+  {
+    newData=newData.sort((a,b)=>b.price-a.price)
+  }
   
   return newData
 }
 let carsData=ApplyFilters()
-function lh()
-{
-  console.log(ProdDetailsCate.length)
-  const x=ProdDetailsCate.length==0?ProdDetails.sort((a,b)=>a.price-b.price):ProdDetailsCate.sort((a,b)=>a.price-b.price)
-  console.log(x)
-  dispatcherMain({type:"lowToHigh",payload:["low2high",x]})
-}
-function hl()
-{
-  console.log(ProdDetailsCate.length)
-  const x=ProdDetailsCate.length==0?ProdDetails.sort((a,b)=>b.price-a.price):ProdDetailsCate.sort((a,b)=>b.price-a.price)
-  console.log(x)
-  dispatcherMain({type:"highToLow",payload:["high2low",x]})
-}
+
+
 
 
 const removeWhisListItem= async(id)=>
@@ -365,7 +361,7 @@ const removeWhisListItem= async(id)=>
 
 
   return (<>
-  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem,AddAddress,removeAddress,starFilterSet,shopCate,removeCate,setStars,setRange,clearAllFilter,hl,lh,logoutUser,removeWhisListItem,carsData,itemInWishList}}>
+  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem,AddAddress,removeAddress,starFilterSet,shopCate,removeCate,setStars,setRange,clearAllFilter,logoutUser,removeWhisListItem,carsData,itemInWishList}}>
     {children}
   </FuncContext.Provider>
   <ToastContainer />
