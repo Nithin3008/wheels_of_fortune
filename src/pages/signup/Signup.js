@@ -1,10 +1,11 @@
 import "./signup.css";
 import { useContext} from "react"
-import { AuthContext } from "../DataProviders/AuthProvider"
+import { Link } from "react-router-dom";
 import { MainContext } from "../DataProviders/MainReducer"
 import { NavBar } from "../../components/navBar/nav";
+import { FuncContext } from "../DataProviders/FuncCall";
 export function Signup1() {
-  const {setHandler1,setUser}=useContext(AuthContext)
+  const {Signup}=useContext(FuncContext)
   const {dispatcherMain}=useContext(MainContext)
   function onSubmit(event)
   {
@@ -17,8 +18,7 @@ export function Signup1() {
     }
     
    dispatcherMain({type:"userDetails",payload:usdDetails})
-    setHandler1("SignUp")
-    setUser(usdDetails)
+    Signup(usdDetails)
    
   }
   return (
@@ -37,9 +37,9 @@ export function Signup1() {
           </form>
           <p>
             Already have account{" "}
-            <a  style={{ color: "orangered", textDecoration: "none" }}>
+            <Link to="/Login1"  style={{ color: "orangered", textDecoration: "none" }}>
               Login!
-            </a>
+            </Link>
           </p>
         </div>
       </section>
