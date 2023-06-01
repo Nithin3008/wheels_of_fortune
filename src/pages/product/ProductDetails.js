@@ -3,6 +3,7 @@ import { MainContext } from "../DataProviders/MainReducer";
 import { useParams } from "react-router-dom";
 import { FuncContext } from "../DataProviders/FuncCall";
 import "./prdDetails.css"
+import { NavBar } from "../../components/navBar/nav";
 export function ProductDetails1()
 {
     const {ProdDetails}=useContext(MainContext)
@@ -12,9 +13,7 @@ export function ProductDetails1()
     console.log(item._id)
     console.log(prodId)
     return(<div>
-        <header>
-            <h1>Product Details page</h1>
-        </header>
+       <NavBar></NavBar>
         <section className="prodDetails">
             <div className="prodImage">
                 <img src={item.src}></img>
