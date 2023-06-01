@@ -10,7 +10,7 @@ export function Cart1()
 {
   const {CartData,LoginId}=useContext(MainContext)
   const {pushWhislistData,removeCartItem,increItem,decreItem}=useContext(FuncContext)
-  const totalPrice=CartData.reduce((acc,val)=>(acc+val.price),0)
+  const totalPrice=CartData.reduce((acc,{qty,price})=>(acc+qty*price),0)
     const nav=useNavigate()
    
     function addtoWhislist(id)
@@ -25,8 +25,6 @@ export function Cart1()
     {
       removeCartItem(id)
     }
-   
-    console.log("hello cart")
     return(<div>
        <NavBar></NavBar>
         {CartData.length<=0?<h1 style={{textAlign:"center",padding:"10px 10px",margin:"20px 20px"}}>Cart is Empty</h1>:""}
@@ -53,8 +51,8 @@ export function Cart1()
                             </div>)}
 
             </div>
-            <div className="orderDetails">
-                    <div>
+            <div  className="orderDetails">
+                    <div style={{visibility:CartData.length<=0?"hidden":""}}>
                         <h2>Order Details</h2>
                         <hr></hr>
                        <div > {CartData.map(({title,price,qty})=><p>{title} ({qty})-<span> {qty*price}$</span></p>)}</div>
