@@ -8,7 +8,7 @@ import { NavBar } from "../../components/navBar/nav";
 export function Cart1()
 {
   const {CartData}=useContext(MainContext)
-  const {pushWhislistData,removeCartItem,increItem,decreItem}=useContext(FuncContext)
+  const {pushWhislistData,removeCartItem,increItem,decreItem,itemInWishList}=useContext(FuncContext)
   const totalPrice=CartData.reduce((acc,{qty,price})=>(acc+qty*price),0)
     const nav=useNavigate()
    
@@ -44,7 +44,7 @@ export function Cart1()
                                 <p>Quantity:<button className="qtyBtn" disabled={val.qty===0} onClick={()=>decreItem(val
                                   ._id)}>-</button> {val.qty}<button className="qtyBtn"  onClick={()=>increItem(val._id)}>+</button></p>
                                 <button onClick={()=>deleteItem(val._id)} className="cartBtn">Remove from Cart</button>
-                                <button  onClick={()=>addtoWhislist(val._id)} className="cartBtn">Move to WhisList</button>
+                                <button disabled={itemInWishList(val._id)===val._id} onClick={()=>addtoWhislist(val._id)} className="cartBtn">Move to WhisList</button>
                             </div>
 
                             </div>)}
