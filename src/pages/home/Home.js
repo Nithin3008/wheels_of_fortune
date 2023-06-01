@@ -8,6 +8,7 @@ import "./home.css";
 import { ToastContainer } from "react-toastify";
 import { Loader } from "../../components/spinner";
 import { NavBar } from "../../components/navBar/nav";
+import { Footer } from "../../components/footer/footer";
 export function Home1() {
 
   console.log("home 3 times")
@@ -64,30 +65,8 @@ export function Home1() {
             ))}
           </div>
         </section>
-        <footer>
-          <div className="footerSec">
-            <div className="secBox1">
-              <p className="heading1">
-                Wheels of <span style={{ color: "orangered" }}>Fortune</span>{" "}
-              </p>
-              <p>Fill your garage with beasts</p>
-            </div>
-            <div className="secBox1 secBox2">
-              <ul>
-                <p className="heading1">Connect</p>
-                <li>
-                  <a href="/">Github</a>
-                </li>
-                <li>
-                  <a href="/">LinkedIn</a>
-                </li>
-                <li>
-                  <a href="/">Twitter</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </footer>
+        <Footer></Footer>
+        
       </div>
       <ToastContainer></ToastContainer>
     </div>
