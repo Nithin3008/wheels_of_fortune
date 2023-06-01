@@ -32,7 +32,7 @@ export const categories = [
     _id: uuid(),
     categoryName: "EV",
     description:
-      "EVs are much more efficient than fossil fuel vehicles and have few direct emissions. At the same time, they do rely on electrical energy.",
+      "EVs are much more efficient than fossil fuel vehicles and have few direct emissions.",
     src: "https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/Category/ev.jpg?raw=true"
   },
 ];
