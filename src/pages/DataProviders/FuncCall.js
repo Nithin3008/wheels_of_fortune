@@ -11,7 +11,7 @@ export function FuncProvider({ children }) {
     const nav=useNavigate()
     console.log("2 times")
   const pushCartData = async (id) => {
-    const product = ProdDetails.find((val) => val._id == id);
+    const product = ProdDetails.find((val) => val._id === id);
     console.log(product)
     
     const encodedToken = localStorage.getItem("token");
@@ -96,7 +96,7 @@ const itemInWishList =(id)=>
   }
 }
 const pushWhislistData = async (id) => {
-    const product = ProdDetails.find((val) => val._id == id);
+    const product = ProdDetails.find((val) => val._id === id);
     const encodedToken = localStorage.getItem("token");
     const getWhislist = async () => {
       try {
@@ -137,7 +137,7 @@ const removeCartItem= async(id)=>
        
         
         )
-        if(response.status==200)
+        if(response.status===200)
        {
         toast.warning("Removed from Cart",{
           position:"bottom-right"})
@@ -180,7 +180,7 @@ const increItem= async(id)=>
         
         )
         console.log(response.data)
-        if(response.status==200)
+        if(response.status===200)
        {
         toast.success("Added one more",{
           position:"bottom-right"})
@@ -219,7 +219,7 @@ const decreItem= async(id)=>
         
         )
         console.log(response.data)
-        if(response.status==200)
+        if(response.status===200)
        {
         toast.warning("Removed one item",{
           position:"bottom-right"})
@@ -340,7 +340,7 @@ const removeWhisListItem= async(id)=>
        
         
         )
-        if(response.status==200)
+        if(response.status===200)
        {
         toast.warning("Removed from Wishlist",{
           position:"bottom-right"})
@@ -356,12 +356,76 @@ const removeWhisListItem= async(id)=>
    removeItem()
 }
 
-
-
+function LoginHandler(userDetails)
+      {
+                const loginHandler = async () => {
+                    try {
+                      const response = await axios.post(`/api/auth/login`, {
+                        email: userDetails?.userName,
+                        password: userDetails?.pwd,
+                      });
+                      
+                      if(response.status===200)
+                      {
+                       
+                        toast.success("Welcome Back",{
+                          position:"top-center"
+                      });
+                      
+                      }
+                      localStorage.setItem("token", response.data.encodedToken);
+                     
+                      const x={fName:response.data.foundUser.firstName,lName:response.data.foundUser.lastName,userName:response.data.foundUser.email}
+                     
+                      
+                      dispatcherMain({type:"LoginHandler",payload:x})
+                     
+                    } catch (error) {
+                      console.log(error);
+                    }
+                    
+                    
+                   
+                    nav("/")
+                  };
+                  
+                  loginHandler()      
+      }        
+      function Signup(userDetails)
+      {
+        
+                  const signupHandler = async () => {
+                    try {
+                      const response = await axios.post(`/api/auth/signup`, {
+                        firstName: userDetails?.fName,
+                        lastName: userDetails?.lName,
+                        email: userDetails?.userName,
+                        password: userDetails?.pwd,
+                      });
+                     
+                    
+                      localStorage.setItem("token", response.data.encodedToken);
+                      // loginFun()
+                      if(response.status===201)
+                      {
+                        toast.success(`Welcome ${userDetails.fName}`,{
+                          position:"top-center"})
+                        nav("/Login1")
+                      }
+                      
+                    } catch (error) {
+                      console.log(error);
+                    }
+                   
+                    
+                  };
+                 
+                  signupHandler()
+      }    
 
 
   return (<>
-  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem,AddAddress,removeAddress,starFilterSet,shopCate,removeCate,setStars,setRange,clearAllFilter,logoutUser,removeWhisListItem,carsData,itemInWishList}}>
+  <FuncContext.Provider value={{pushCartData,pushWhislistData,removeCartItem,itemInCart,increItem,decreItem,AddAddress,removeAddress,starFilterSet,shopCate,removeCate,setStars,setRange,clearAllFilter,logoutUser,removeWhisListItem,carsData,itemInWishList,LoginHandler,Signup}}>
     {children}
   </FuncContext.Provider>
   <ToastContainer />
