@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { FuncContext } from "../DataProviders/FuncCall";
 import { MainContext } from "../DataProviders/MainReducer";
 import { NavBar } from "../../components/navBar/nav";
@@ -19,7 +18,7 @@ export function Whislist1() {
         {WhisListData.map((val) => (
           <div key={val.title} className="prodCards">
             <div key={val.title} className="productImages">
-              <img src={`${val.src}`}></img>
+              <img src={`${val.src}` } alt="carImages"></img>
             </div>
             <div key={val._id}>
               <p>Title: {val.title}</p>
