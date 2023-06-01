@@ -5,11 +5,12 @@ import { MainContext } from "../DataProviders/MainReducer";
 import { FuncContext } from "../DataProviders/FuncCall";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { NavBar } from "../../components/navBar/nav";
 export function Cart1()
 {
   const {CartData,LoginId}=useContext(MainContext)
   const {pushWhislistData,removeCartItem,increItem,decreItem}=useContext(FuncContext)
-    
+  const totalPrice=CartData.reduce((acc,val)=>(acc+val.price),0)
     const nav=useNavigate()
    
     function addtoWhislist(id)
@@ -27,26 +28,7 @@ export function Cart1()
    
     console.log("hello cart")
     return(<div>
-       <header className="topSection">
-          <div className="topSectionBox">
-            <div>
-              <p className="heading1">
-                Wheels of <span style={{ color: "orangered" }}>Fortune</span>
-              </p>
-            </div>
-            <nav>
-              <button onClick={()=>nav("/Login1")}  className="navButton">
-                Login
-              </button>
-              <button onClick={()=>LoginId?nav("/Cart1"):""}  className="navButton">
-                Cart
-              </button>
-              <button onClick={()=>LoginId?nav("/Whislist1"):""}  className="navButton">
-                Whislist
-              </button>
-            </nav>
-          </div>
-        </header>
+       <NavBar></NavBar>
         {CartData.length<=0?<h1 style={{textAlign:"center",padding:"10px 10px",margin:"20px 20px"}}>Cart is Empty</h1>:""}
         <div className="CartBox">
          
@@ -62,10 +44,10 @@ export function Cart1()
                                 <p>Manufacturer: {val.manufacturer}</p>
                                 <p>Power: {val.HP}</p>
                                 <p>Price: {val.price}$</p>
-                                <p>Quantity:<button disabled={val.qty==0} onClick={()=>decreItem(val
-                                  ._id)}>-</button> {val.qty}<button onClick={()=>increItem(val._id)}>+</button></p>
-                                <button onClick={()=>deleteItem(val._id)} className="buttonSty cart">Remove from Cart</button>
-                                <button  onClick={()=>addtoWhislist(val._id)} className="buttonSty cart">Move to WhisList</button>
+                                <p>Quantity:<button className="qtyBtn" disabled={val.qty==0} onClick={()=>decreItem(val
+                                  ._id)}>-</button> {val.qty}<button className="qtyBtn"  onClick={()=>increItem(val._id)}>+</button></p>
+                                <button onClick={()=>deleteItem(val._id)} className="cartBtn">Remove from Cart</button>
+                                <button  onClick={()=>addtoWhislist(val._id)} className="cartBtn">Move to WhisList</button>
                             </div>
 
                             </div>)}
@@ -75,10 +57,10 @@ export function Cart1()
                     <div>
                         <h2>Order Details</h2>
                         <hr></hr>
-                       <div > {CartData.map(({title,price,qty})=><p>{title}- {qty*price}$</p>)}</div>
+                       <div > {CartData.map(({title,price,qty})=><p>{title} ({qty})-<span> {qty*price}$</span></p>)}</div>
                         <hr></hr>
-                       <div >Total Price: {CartData.reduce((acc,{price,qty})=>((qty*price)+acc),0)}$</div>
-                       <button onClick={()=>CartData.length>0?nav("/Checkout1"):""} className="buttonSty">Proceed with checkout</button>
+                       <div >Total Price:<span> {totalPrice}$</span></div>
+                       <button onClick={()=>CartData.length>0?nav("/Checkout1"):""} className="cartBtn">Proceed with checkout</button>
                     </div>
             </div>
            
