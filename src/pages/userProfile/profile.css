@@ -16,7 +16,7 @@
 .userDetails
 {
     max-width: 600px;
-    margin:12% auto;
+    margin:10% auto;
     text-align: center;
     border: 2px solid var(--font1-clr);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

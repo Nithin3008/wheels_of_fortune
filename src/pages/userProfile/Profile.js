@@ -1,15 +1,15 @@
 import { useContext } from "react"
 import { MainContext } from "../DataProviders/MainReducer";
 import { FuncContext } from "../DataProviders/FuncCall";
+import { NavBar } from "../../components/navBar/nav";
 import "./profile.css"
 export function Profile1()
 {
     const {ProfileDetails}=useContext(MainContext)
     const {logoutUser}=useContext(FuncContext)
     return(<div>
-        <header>
-            THis is profile
-        </header>
+        <NavBar></NavBar>
+       
             <div className="userDetails">
                 <h1>My Account</h1>
                 <div>
