@@ -7,7 +7,7 @@ import { NavBar } from "../../components/navBar/nav";
 export function ProductDetails1()
 {
     const {ProdDetails}=useContext(MainContext)
-    const {pushCartData,pushWhislistData,itemInCart}=useContext(FuncContext)
+    const {pushCartData,pushWhislistData,itemInCart,itemInWishList}=useContext(FuncContext)
     const {prodId}=useParams()
     const item=ProdDetails.find((val)=>val._id===prodId)
     console.log(item._id)
@@ -16,7 +16,7 @@ export function ProductDetails1()
        <NavBar></NavBar>
         <section className="prodDetails">
             <div className="prodImage">
-                <img src={item.src}></img>
+                <img src={item.src} alt="carImage"></img>
             </div>
             <div className="prodDet">
                 <h2>{item.title}</h2>
@@ -24,8 +24,8 @@ export function ProductDetails1()
                 <p>HP:{item.HP}</p>
                 <p>Torque: {item.Torque}</p>
                 <p>Rating: {item. rating}</p>
-                <button disabled={itemInCart(item._id)==item._id} onClick={()=>pushCartData(item._id)}>{itemInCart(item._id)===item._id?"Go to Cart":"Add to cart"}</button>
-                <button onClick={()=>pushWhislistData(item._id)}>Move to Wishlist</button>
+                <button disabled={itemInCart(item._id)===item._id} onClick={()=>pushCartData(item._id)}>{itemInCart(item._id)===item._id?"Go to Cart":"Add to cart"}</button>
+                <button disabled={itemInWishList(item._id)===item._id} onClick={()=>pushWhislistData(item._id)}>Move to Wishlist</button>
             </div>
         </section>
     </div>)
