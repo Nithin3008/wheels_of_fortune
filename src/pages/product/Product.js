@@ -86,8 +86,8 @@ function cleanAll()
                         <div>
                             <p>Price Sort</p>
                             <div className="categoryFilter">
-                            <label><input checked={SortBy==="low2High"?true:false} onClick={()=>lh()} type="radio"></input> low to high</label>
-                            <label><input checked={SortBy==="high2Low"?true:false} onClick={()=>hl()} type="radio"></input> high to low</label>
+                            <label><input checked={SortBy==="low2High"?true:false} onClick={()=>dispatcherMain({type:"lowToHigh",payload:"low2high"})} type="radio"></input> low to high</label>
+                            <label><input checked={SortBy==="high2Low"?true:false} onClick={()=>dispatcherMain({type:"highToLow",payload:"high2low"})} type="radio"></input> high to low</label>
                             </div>
                         </div>
                     </div>
