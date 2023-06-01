@@ -6,6 +6,7 @@ import { useContext } from "react"
 import { AuthContext } from "../DataProviders/AuthProvider"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { NavBar } from "../../components/navBar/nav";
 export function Login1() {
     console.log("login 2 times")
     const {setUser,setHandler1}=useContext(AuthContext)
@@ -40,18 +41,7 @@ export function Login1() {
         setUser(details)
     }
     return (<div>
-        <header className="topSection">
-            <div className="topSectionBox">
-                <div>
-                    <p className="heading1">Wheels of <span style={{ color: "orangered" }}>Fortune</span></p>
-
-                </div>
-                <nav>
-                    <Link href="/Cart1" className="linksStyling">Cart</Link>
-                    <Link href="/Whislist1" className="linksStyling">Whislist</Link>
-                </nav>
-            </div>
-        </header>
+      <NavBar></NavBar>
         <section className="contentBox1">
             <div className="login-box">
                 <p className="heading1">Login</p>
