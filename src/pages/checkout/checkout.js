@@ -38,7 +38,8 @@ export function Checkout1() {
     setForm(false);
   }
   function removeAddr() {
-    removeAddress(idAddr);
+    idAddr.length>0?removeAddress(idAddr): toast.error(`please select address`,{
+      position:"top-center"})
   }
   function setAddId(event, id) {
     event.target.checked = true;
