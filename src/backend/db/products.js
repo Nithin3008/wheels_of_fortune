@@ -15,7 +15,7 @@ export const products = [
     HP: 450,
     Torque: "691 Nm",
     engine: "V6",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/f150.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/f150.webp",
     rating:5
   },
   {
@@ -27,7 +27,7 @@ export const products = [
     HP: 437,
     Torque: "790 Nm",
     engine: "V6",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/tundra.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/tundra.webp",
     rating:4.7
   },
   {
@@ -39,7 +39,7 @@ export const products = [
     HP: 420,
     Torque: "625 Nm",
     engine: "V8",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/silverado.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/silverado.webp",
     rating:4.5
   },
   {
@@ -51,7 +51,7 @@ export const products = [
     HP: 470,
     Torque: "1300 Nm",
     engine: "V8",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/sierra.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/sierra.webp",
     rating:3.5
 
   },
@@ -64,7 +64,7 @@ export const products = [
     HP: 702,
     Torque: "885 Nm",
     engine: "V8",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/ram.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/ram.webp",
     rating:2.8
   },
 
@@ -79,7 +79,7 @@ export const products = [
     HP: 523,
     Torque: "750 Nm",
     engine: "V8",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/rangerover.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/rangerover.webp",
     rating:5.0
   },
   {
@@ -91,7 +91,7 @@ export const products = [
     HP: 577,
     Torque: "760 Nm",
     engine: "V8",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/g63.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/g63.webp",
     rating:4.3
 
   },
@@ -104,7 +104,7 @@ export const products = [
     HP: 523,
     Torque: "612 Nm",
     engine: "V8",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/x7.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/x7.webp",
     rating:3.8
   },
 
@@ -117,7 +117,7 @@ export const products = [
     HP: 707,
     Torque: "900 Nm",
     engine: "V8",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/DBX.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/DBX.webp",
     rating:4.8
   },
 
@@ -146,7 +146,7 @@ export const products = [
     HP: 635,
     Torque: "750 Nm",
     engine: "V8",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/M5-CS.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/M5-CS.webp",
     rating:4.8
 
   },
@@ -161,7 +161,7 @@ export const products = [
     HP: 963,
     Torque: "900 Nm",
     engine: "V8",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/La-Ferrari.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/La-Ferrari.webp",
     rating:4.2
   },
 
@@ -175,7 +175,7 @@ export const products = [
     HP: 1600,
     Torque: "1500 Nm",
     engine: "V8",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/Jesko.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/Jesko.webp",
     rating:5.0
   },
 
@@ -190,7 +190,7 @@ export const products = [
     HP: 1000,
     Torque: "760 Nm",
     engine: "V12",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/Valkyrie.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/Valkyrie.webp",
     rating:4.0
   },
 
@@ -221,7 +221,7 @@ export const products = [
     categoryName: "EV",
     HP: 590,
     Torque: "830 Nm",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/e-tron%20Gt.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/e-tron%20Gt.webp",
     rating:4.3
 
   },
@@ -248,7 +248,7 @@ export const products = [
     categoryName: "EV",
     HP: 1914,
     Torque: "2360 Nm",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/Nevara.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/Nevara.webp",
     rating:4.8
   },
 
@@ -257,7 +257,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Air Sapphire",
-    src:"https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/products/Air%20Sapphire.jpg?raw=true",
+    src:"https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/products/Air%20Sapphire.webp",
     manufacturer: "Lucid Mototrs",
     price: 250000,
     categoryName: "EV",
