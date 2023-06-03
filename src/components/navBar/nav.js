@@ -16,7 +16,7 @@ export function NavBar()
     
     return(<div>
         <div className="NavBox">
-            <div className="Logo"><p onClick={()=>nav("/")}>Wheels of <span>Fortune</span></p></div>
+            <div className="Logo"><p style={{cursor:"pointer"}} onClick={()=>nav("/")}>Wheels of <span>Fortune</span></p></div>
             <div className="searchBox"><input onChange={(e)=>searchBox(e)} type="search" placeholder="Search"></input></div>
             <div className="NavLinks">
             <button onClick={()=>LoginId?nav("/Profile1"):nav("/Login1")}>Login</button>
