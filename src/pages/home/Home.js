@@ -40,7 +40,7 @@ export function Home1() {
             <div>
               <img
                 className="images"
-                src="https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/Category/suv.jpg?raw=true"
+                src="https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/Category/truck.webp"
                 alt="carImages"></img>
             </div>
           </div>
