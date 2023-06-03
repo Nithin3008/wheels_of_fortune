@@ -18,17 +18,17 @@ An e-commerce project for purchasing cars
 *  Product Listing Page
 *  Single Product image
 *  Filters
-*    1.Price
-*    2.Category
-*    3.Ratings
+     * Price
+     * Category
+     * Ratings
 *  Wishlisth Management
 *  Cart Management
 *  Search
 *  Loading & Alerts
 *  Authentication  
-    1.Sign-up
-    2.Login
-    3.Logout
+    * Sign-up
+    * Login
+    * Logout
 * Address Management
 * Checkout
 
