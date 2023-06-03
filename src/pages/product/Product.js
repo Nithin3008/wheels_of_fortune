@@ -54,6 +54,7 @@ function cleanAll()
 {
     clearAllFilter()
 }
+console.log(ratingFilter)
     return (
       <div>
         {carsData.length<=0?<Loader></Loader>:""}
@@ -77,17 +78,17 @@ function cleanAll()
                         <div>
                             <p >Rating</p>
                             <div className="categoryFilter">
-                            <label> <input checked={ratingFilter===1?true:false} value={1} onClick={(e)=>setRating(e)} type="radio"></input> 1 Star+</label>
-                            <label> <input checked={ratingFilter===2?true:false} value={2} onClick={(e)=>setRating(e)} type="radio"></input> 2 Star+</label>
-                            <label> <input checked={ratingFilter===3?true:false} value={3} onClick={(e)=>setRating(e)} type="radio"></input> 3 Star+</label>
-                            <label> <input checked={ratingFilter===4?true:false} value={4} onClick={(e)=>setRating(e)} type="radio"></input> 4 Star+</label>
+                            <label> <input checked={ratingFilter==1?true:false} value={1} onClick={(e)=>setRating(e)} type="radio"></input> 1 Star+</label>
+                            <label> <input checked={ratingFilter==2?true:false} value={2} onClick={(e)=>setRating(e)} type="radio"></input> 2 Star+</label>
+                            <label> <input checked={ratingFilter==3?true:false} value={3} onClick={(e)=>setRating(e)} type="radio"></input> 3 Star+</label>
+                            <label> <input checked={ratingFilter==4?true:false} value={4} onClick={(e)=>setRating(e)} type="radio"></input> 4 Star+</label>
                             </div>
                         </div>
                         <div>
                             <p>Price Sort</p>
                             <div className="categoryFilter">
-                            <label><input checked={SortBy==="low2High"?true:false} onClick={()=>dispatcherMain({type:"lowToHigh",payload:"low2high"})} type="radio"></input> low to high</label>
-                            <label><input checked={SortBy==="high2Low"?true:false} onClick={()=>dispatcherMain({type:"highToLow",payload:"high2low"})} type="radio"></input> high to low</label>
+                            <label><input checked={SortBy=="low2high"?true:false} onClick={()=>dispatcherMain({type:"lowToHigh",payload:"low2high"})} type="radio"></input> low to high</label>
+                            <label><input checked={SortBy=="high2low"?true:false} onClick={()=>dispatcherMain({type:"highToLow",payload:"high2low"})} type="radio"></input> high to low</label>
                             </div>
                         </div>
                     </div>
