@@ -41,7 +41,7 @@ export function Cart1()
                                 <p>Manufacturer: {val.manufacturer}</p>
                                 <p>Power: {val.HP}</p>
                                 <p>Price: {val.price}$</p>
-                                <p>Quantity:<button className="qtyBtn" disabled={val.qty===0} onClick={()=>decreItem(val
+                                <p>Quantity:<button className="qtyBtn" disabled={val.qty===1} onClick={()=>decreItem(val
                                   ._id)}>-</button> {val.qty}<button className="qtyBtn"  onClick={()=>increItem(val._id)}>+</button></p>
                                 <button onClick={()=>deleteItem(val._id)} className="cartBtn">Remove from Cart</button>
                                 <button disabled={itemInWishList(val._id)===val._id} onClick={()=>addtoWhislist(val._id)} className="cartBtn">Move to WhisList</button>
