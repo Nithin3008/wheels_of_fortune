@@ -10,22 +10,22 @@ export const categories = [
     _id: uuid(),
     categoryName: "Trucks",
     description:
-      "Heavy duty and Torquy engines good for construction work.",
-    src: "https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/Category/truck.jpg?raw=true"
+      "Heavy duty and Torquy engines good for work.",
+    src: "https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/Category/truck.webp"
   },
   {
     _id: uuid(),
     categoryName: "Super Cars",
     description:
       "Gaz guzzlers,High performance cars fun to drive.",
-    src: "https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/Category/car.jpg?raw=true"
+    src: "https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/Category/car.webp"
   },
   {
     _id: uuid(),
     categoryName: "Suv",
     description:
       "Good family cars and best for offroading.",
-    src: "https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/Category/suv.jpg?raw=true"
+    src: "https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/Category/suv.webp"
   },
 
   {
@@ -33,6 +33,6 @@ export const categories = [
     categoryName: "EV",
     description:
       "EVs are much more efficient than fossil fuel vehicles and have few direct emissions.",
-    src: "https://github.com/Nithin3008/wheels_of_fortune/blob/main/public/Images/Category/ev.jpg?raw=true"
+    src: "https://raw.githubusercontent.com/Nithin3008/wheels_of_fortune/main/public/Images/Category/ev.webp"
   },
 ];
