@@ -35,3 +35,9 @@ An e-commerce project for purchasing cars
 ## Demo Link
 Link:https://wheels-of-fortune.netlify.app/
 
+## Demo Video
+
+
+https://github.com/Nithin3008/wheels_of_fortune/assets/60174062/fc181e3a-44d2-4eff-90a4-ba793beacc82
+
+
