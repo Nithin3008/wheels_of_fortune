@@ -110,7 +110,7 @@ export function MainProvider({ children }) {
     }
     else if(action.type==="lowToHigh")
     {
-        console.log("helo")
+        
         return{...state,SortBy:action.payload}
     }
     else if(action.type==="highToLow")
