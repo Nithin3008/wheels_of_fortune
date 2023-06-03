@@ -364,29 +364,29 @@ function LoginHandler(userDetails)
                         email: userDetails?.userName,
                         password: userDetails?.pwd,
                       });
-                      
+                      localStorage.setItem("token", response.data.encodedToken);
                       if(response.status===200)
                       {
                        
                         toast.success("Welcome Back",{
                           position:"top-center"
                       });
-                      
-                      }
-                      localStorage.setItem("token", response.data.encodedToken);
-                     
+                      nav("/")
+                      }                     
                       const x={fName:response.data.foundUser.firstName,lName:response.data.foundUser.lastName,userName:response.data.foundUser.email}
                      
                       
                       dispatcherMain({type:"LoginHandler",payload:x})
                      
                     } catch (error) {
-                      console.log(error);
+                      toast.error("Please enter correct details",{
+                        position:"top-center"
+                    });
                     }
                     
                     
                    
-                    nav("/")
+                    
                   };
                   
                   loginHandler()      
