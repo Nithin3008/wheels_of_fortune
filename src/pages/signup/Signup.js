@@ -30,7 +30,7 @@ export function Signup1() {
           <form className="formData" onSubmit={(e)=>onSubmit(e)}>
           <input  id="firstName" type="text" placeholder={"First Name"}></input>
           <input  id="lastName" type="text" placeholder={"Last Name"}></input>
-          <input  id="userName" type="email" placeholder={"User Name"}></input>
+          <input  id="userName" type="email" placeholder={"email"}></input>
           <input   id="pwd" type="password" placeholder={"Password"}></input>
           <br></br>
           <button type="submit"  className="buttonSty">Sign up!</button>
