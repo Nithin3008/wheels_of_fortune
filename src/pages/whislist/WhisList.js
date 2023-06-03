@@ -5,15 +5,16 @@ import { NavBar } from "../../components/navBar/nav";
 import "./wishList.css"
 export function Whislist1() {
   const { WhisListData } = useContext(MainContext);
-  const { removeWhisListItem, pushCartData,itemInWishList,itemInCart } = useContext(FuncContext);
+  const { removeWhisListItem, pushCartData,itemInCart } = useContext(FuncContext);
   function cartHanler(id) {
     pushCartData(id);
     removeWhisListItem(id);
   }
+  console.log(WhisListData.length)
   return (
     <div>
       <NavBar></NavBar>
-      {/* <h1 style={{visibility:WhisListData.length==0?"hidden":""}}>WishList is Empty</h1> */}
+     <div style={{textAlign:"center"}}><h1 style={{visibility:WhisListData.length<=0?"visible":"hidden"}}>WishList is Empty</h1></div> 
       <div className="cartItems">
         {WhisListData.map((val) => (
           <div key={val.title} className="prodCards">
