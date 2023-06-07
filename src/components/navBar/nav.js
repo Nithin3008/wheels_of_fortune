@@ -2,6 +2,14 @@ import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { MainContext } from "../../pages/DataProviders/MainReducer"
 import "./nav.css"
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+// init AOS animation
+AOS.init({
+    duration: 1000,
+    offset: 100,
+});
 export function NavBar()
 {
 
@@ -15,7 +23,7 @@ export function NavBar()
     
     
     return(<div>
-        <div className="NavBox">
+        <div className="NavBox" data-aos={"fade-down"}>
             <div className="Logo"><p style={{cursor:"pointer"}} onClick={()=>nav("/")}>Wheels of <span>Fortune</span></p></div>
             <div className="searchBox"><input onChange={(e)=>searchBox(e)} type="search" placeholder="Search"></input></div>
             <div className="NavLinks">

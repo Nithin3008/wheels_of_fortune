@@ -4,10 +4,18 @@ import pic1 from "./svg/icons8-github.svg"
 import pic2 from "./svg/icons8-linkedin.svg"
 import pic3 from "./svg/icons8-twitter.svg"
 import "./footer.css"
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+// init AOS animation
+AOS.init({
+    duration: 1000,
+    offset: 100,
+});
 export function Footer()
 {
     return(<div>
-        <div className="FooterBox">
+        <div className="FooterBox" data-aos={"fade-down"}>
             <div className="FooterLogo">
                 <h1>Wheels of <span>Fortune</span></h1>
                 <p>Fill your garage with beasts</p>
