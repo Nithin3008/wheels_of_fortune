@@ -13,7 +13,7 @@ An e-commerce project for purchasing cars
 
 ## Features
 ---
-*  Home Page #1
+*  Home Page
 *  Product Listing Page
 *  Single Product image
 *  Filters
