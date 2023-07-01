@@ -13,7 +13,6 @@ An e-commerce project for purchasing cars
 
 ## Features
 ---
-# Numbered Lists
 *  Home Page #1
 *  Product Listing Page
 *  Single Product image
