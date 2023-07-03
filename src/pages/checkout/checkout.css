@@ -1,83 +1,92 @@
-.MainBox
-{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 50px;
+.MainBox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 50px;
 }
 
-.AddressItems
-{
-    display: flex;
-    align-items: center;
-    list-style: none;
-    background-color: orangered;
-    color: white;
-    border-radius: 5px;
-    padding: 10px 10px;
-    margin: 10px 30px;
-    justify-content: space-around;
-    width: 500px;
-    /* text-align: center; */
+.AddressItems {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  background-color: orangered;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 10px;
+  margin: 10px 30px;
+  justify-content: space-around;
+  width: 500px;
+  /* text-align: center; */
 }
-.AddressItems button
-{
-    padding: 5px 5px;
-    height: 40px;
-    border: 0;
-    border-radius: 5px;
+.AddressItems button {
+  padding: 5px 5px;
+  height: 40px;
+  border: 0;
+  border-radius: 5px;
 }
-.Form{
-    padding: 10px 10px;
-    margin: 10px 30px;
-    border: 5px solid orangered;
-    font-size: 16px;
-    border-radius: 5px;
+.Form {
+  padding: 25px 25px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: white;
+  width: fit-content;
+  margin: 10% auto;
 }
-.Form div
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+.Form div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.Form span
-{
-    font-size: 20px;
-    font-weight: 400;
-    padding: 10px 10px;
+.Form span {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 10px 10px;
 }
-.Form input
-{
-    margin-left: 40px;
+.Form__inputTag input {
+  padding: 5px 10px;
+  font-size: 15px;
+  outline: 0;
+  border: 0;
 }
-.Form button
-{
-    border: 0;
-    font-size: 16px;
-    background-color: orangered;
-    color: white;
-    border-radius: 5px;
-    padding: 10px 10px;
+.Form__inputTag {
+  width: fit-content;
+  border: 2px solid orangered;
+  border-radius: 3px;
 }
-.addBtn 
-{
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.Form button {
+  border: 0;
+  font-size: 16px;
+  background-color: orangered;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 10px;
 }
-.addBtn button
-{
-    font-size: 20px;
-    border: 0;
-    background-color: orangered;
-    color: white;
-    border-radius: 5px;
-    padding: 10px 10px;
-    width: 200px;
+.addBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.checkoutBox .totalPrice
-{
-    text-align: center;
+.addBtn button {
+  font-size: 20px;
+  border: 0;
+  background-color: orangered;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 10px;
+  width: 200px;
+}
+.checkoutBox .totalPrice {
+  text-align: center;
+}
+.formModal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }

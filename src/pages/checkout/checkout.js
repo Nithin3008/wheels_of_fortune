@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { MainContext } from "../DataProviders/MainReducer";
 import { v4 as uuid } from "uuid";
 import { FuncContext } from "../DataProviders/FuncCall";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { NavBar } from "../../components/navBar/nav";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
@@ -38,8 +38,11 @@ export function Checkout1() {
     setForm(false);
   }
   function removeAddr() {
-    idAddr.length>0?removeAddress(idAddr): toast.error(`please select address`,{
-      position:"top-center"})
+    idAddr.length > 0
+      ? removeAddress(idAddr)
+      : toast.error(`please select address`, {
+          position: "top-center",
+        });
   }
   function setAddId(event, id) {
     event.target.checked = true;
@@ -91,50 +94,53 @@ export function Checkout1() {
             </ul>
           ))}
 
-          <form
-            onSubmit={(e) => submitForm(e)}
-            className="Form"
+          <div
             style={{ display: formShow ? "block" : "none" }}
+            className="formModal"
           >
-            <div>
-              <h2
-                style={{
-                  color: "orangered",
-                  backgroundColor: "#185464",
-                  padding: "10px 10px",
-                  borderRadius: "5px",
-                }}
-              >
-                Enter new Address
-              </h2>
-              <span>
-                Phone:<input id="phnNo" type="number" required></input>
-              </span>
-              <span>
-                {" "}
-                street:<input id="street" type="text" required></input>
-              </span>
-              <span>
-                Pincode:<input id="code" type="number" required></input>
-              </span>
-              <span>
-                city:<input id="city" type="text" required></input>
-              </span>
-              <span>
-                {" "}
-                country:<input id="country" type="text" required></input>
-              </span>
-              <button type="submit">Submit</button>
-            </div>
-          </form>
+            <form onSubmit={(e) => submitForm(e)} className="Form">
+              <div>
+                <h2
+                  style={{
+                    color: "orangered",
+                    backgroundColor: "#185464",
+                    padding: "10px 10px",
+                    borderRadius: "5px",
+                  }}
+                >
+                  Enter new Address
+                </h2>
+                Phone:
+                <div className="Form__inputTag">
+                  <input id="phnNo" type="number" required></input>
+                </div>
+                Street:
+                <div className="Form__inputTag">
+                  {" "}
+                  <input id="street" type="text" required></input>
+                </div>
+                Pincode:
+                <div className="Form__inputTag">
+                  <input id="code" type="number" required></input>
+                </div>
+                City:
+                <div className="Form__inputTag">
+                  <input id="city" type="text" required></input>
+                </div>
+                Country:
+                <div className="Form__inputTag">
+                  {" "}
+                  <input id="country" type="text" required></input>
+                </div>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <button type="submit">Submit</button>
+                  <button onClick={() => hideForm()}>Cancel</button>
+                </div>
+              </div>
+            </form>
+          </div>
 
           <div className="addBtn">
-            <button
-              style={{ display: formShow ? "block" : "none" }}
-              onClick={() => hideForm()}
-            >
-              Cancel
-            </button>
             <button onClick={() => showForm()}>Add New Address </button>
           </div>
         </div>
