@@ -151,12 +151,12 @@ export function Checkout1() {
           <h2>Final Order Details</h2>
           <hr></hr>
           {CartData.map((val) => (
-            <p>
+            <div className="orderDetails__order checkoutOrder">
               <span>
                 {val.title} ({val.qty})$
               </span>{" "}
-              <span>{val.price}</span>
-            </p>
+              <span>-{val.price}$</span>
+            </div>
           ))}
           <hr></hr>
           <div className="totalPrice">
