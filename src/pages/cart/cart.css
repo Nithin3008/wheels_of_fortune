@@ -1,71 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;500;600;700;800&display=swap');
-*
-{
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;500;600;700;800&display=swap");
+* {
   margin: 0px;
   padding: 0px;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
-:root
-{
-    --main-clr:#f0f0f2;
-    --bg-clr: #4A4A4B;
-    --font-clr:orangered;
-    --font-clr2:#185464
+:root {
+  --main-clr: #f0f0f2;
+  --bg-clr: #4a4a4b;
+  --font-clr: orangered;
+  --font-clr2: #185464;
 }
 
-.CartBox
-{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 25px;
+.CartBox {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 25px;
 }
-.productCards
-{
-    padding: 10px 10px;
-    margin: 2px 2px;
-    border-radius: 5px;
+.productCards {
+  padding: 10px 10px;
+  margin: 2px 2px;
+  border-radius: 5px;
 }
-.productCards:hover
-{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.productCards:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.productImages img
-{
-    height: 200px;
-    border-radius: 5px;
-    /* width: 350px; */
+.productImages img {
+  height: 200px;
+  border-radius: 5px;
+  /* width: 350px; */
 }
-.orderDetails 
-{
-    padding: 25px 25px;
-    text-align: center;
-    border-radius: 6px;
-    height: min-content;
-    
+.orderDetails {
+  padding: 25px 25px;
+  text-align: center;
+  border-radius: 6px;
+  height: min-content;
 }
-.orderDetails span{
-    padding: 10px 10px;
-    margin-left: 50px;
+.orderDetails span {
+  padding: 10px 10px;
+  margin-left: 50px;
 }
-.cartBtn
-{
-    border: 0;
-    background-color:var(--font-clr);
-    padding: 10px 12px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #f0f0f2;
-    text-decoration: none;
-    margin:10px 10px;
+.cartBtn {
+  border: 0;
+  background-color: var(--font-clr);
+  padding: 10px 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #f0f0f2;
+  text-decoration: none;
+  margin: 10px 10px;
 }
-.qtyBtn
-{
-    background-color: var(--font-clr2);
-    border: 0;
-    padding: 5px 5px;
-    color: white;
-    height: 25px;
-    width: 25px;
-    border-radius: 2px;
+.qtyBtn {
+  background-color: var(--font-clr2);
+  border: 0;
+  padding: 5px 5px;
+  color: white;
+  height: 25px;
+  width: 25px;
+  border-radius: 100%;
+}
+.orderDetails__order {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.orderDetails__order p {
+  margin: 0px 15px;
+  padding: 5px 10px;
 }
