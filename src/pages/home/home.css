@@ -19,18 +19,23 @@
     font-size: 25px;
     font-weight: 700;
 }
+
 .contentBox
 {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #f0f0f2;
+    
+    
     padding: 20px 20px;
      border-radius: 7px;
+     overflow: hidden;
 }
 .images
 {
     height: 400px;
+    /* width: 300px; */
+    object-fit: contain;
     border-radius: 7px;
 }
 .contentHeading
@@ -55,7 +60,6 @@
    margin-top: 10px;
    padding: 5px 5px; 
    background-color: #185464;
-   /* width: 100%; */
    
 }
 .heading2
@@ -100,12 +104,7 @@
     color:var(--bg-clr);
     
 }
-/* .cateBut
-{
-    
-    background-color: var(--font-clr);
-    text-align: center;
-} */
+
 .categoryChild Link
 {
     text-align: center;
