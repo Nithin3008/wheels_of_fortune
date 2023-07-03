@@ -31,8 +31,7 @@ export function Home1() {
     <div>
       <NavBar ></NavBar>
        {Category.length<=0?<Loader></Loader>:""}
-       {/* <Loader></Loader> */}
-      <div className="mainBox">
+      {/* <div className="mainBox"> */}
       
         <section className="contentContainer">
           <div className="contentBox">
@@ -75,7 +74,7 @@ export function Home1() {
         </section>
         <Footer></Footer>
         
-      </div>
+      {/* </div> */}
       <ToastContainer></ToastContainer>
     </div>
   );
