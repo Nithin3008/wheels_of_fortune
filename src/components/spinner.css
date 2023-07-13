@@ -1,16 +1,14 @@
-.LoaderClass
-{
-    text-align: center;
-    /* z-index: 1; */
-    /* margin-top: 10%;
-    margin-left: 35%; */
-    position: fixed;
-    background-color: white;
-    opacity: 0.5;
-    height: 100%;
-    width: 100%;
+.LoaderClass {
+  z-index: 1;
+  position: fixed;
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  opacity: 0.5;
+  height: 100%;
+  width: 100%;
 }
-.LoaderClass div
-{
-    text-align: center;
+.LoaderClass div {
+  width: fit-content;
+  margin: auto;
+  margin-top: 10%;
 }

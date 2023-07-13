@@ -1,119 +1,121 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;500;600;700;800&display=swap');
-*
-{
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;500;600;700;800&display=swap");
+* {
   margin: 0px;
   padding: 0px;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
-:root
-{
-    --main-clr:#f0f0f2;
-    --bg-clr: #4A4A4B;
-    --font-clr:orangered;
-    --font-clr2:#185464
-}
-
-
-.heading1
-{
-    font-size: 25px;
-    font-weight: 700;
+:root {
+  --main-clr: #f0f0f2;
+  --bg-clr: #4a4a4b;
+  --font-clr: orangered;
+  --font-clr2: #185464;
 }
 
-.contentBox
-{
+.heading1 {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.contentBox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 20px 20px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.images {
+  height: 400px;
+  /* width: 300px; */
+  object-fit: contain;
+  border-radius: 7px;
+}
+.contentHeading {
+  padding: 15px 15px;
+}
+
+.buttonSty {
+  border: 0;
+  background-color: var(--bg-clr);
+  padding: 10px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #f0f0f2;
+  text-decoration: none;
+  margin: 10px 20px;
+}
+.contentContainer2 {
+  margin-top: 10px;
+  padding: 5px 5px;
+  background-color: #185464;
+}
+.heading2 {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--font-clr);
+  text-align: center;
+}
+.categoryBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 5px;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.categoryChild {
+  display: flex;
+  align-items: center;
+  width: 650px;
+  padding: 5px 5px;
+  border-radius: 5px;
+}
+.categoryChild:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.categoryImages {
+  height: 250px;
+  border-radius: 15px;
+  padding: 10px 10px;
+}
+.categoryHeading {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 5px 5px;
+  color: var(--bg-clr);
+}
+
+.categoryChild Link {
+  text-align: center;
+}
+.catHead {
+  color: var(--font-clr);
+  background-color: #185464;
+  border-radius: 5px;
+  max-width: 50%;
+  margin: auto;
+  text-align: center;
+}
+@media (max-width: 1160px) {
+  .contentContainer {
+    display: none;
+  }
+}
+@media (max-width: 750px) {
+  .categoryChild {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    
-    
-    padding: 20px 20px;
-     border-radius: 7px;
-     overflow: hidden;
+    flex-direction: column;
+  }
+  .categoryImages {
+    height: 150px;
+  }
 }
-.images
-{
-    height: 400px;
-    /* width: 300px; */
-    object-fit: contain;
-    border-radius: 7px;
-}
-.contentHeading
-{
-    padding: 15px 15px;
-}
-
-.buttonSty
-{
-    border: 0;
-    background-color:var(--bg-clr    );
-    padding: 10px 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #f0f0f2;
-    text-decoration: none;
-    margin:10px 20px;
-}
-.contentContainer2
-{
-   margin-top: 10px;
-   padding: 5px 5px; 
-   background-color: #185464;
-   
-}
-.heading2
-{
-    font-size: 40px;
-    font-weight: 800;
-    color: var(--font-clr);
-    text-align: center;
-}
-.categoryBox
-{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding:5px
-}
-.categoryChild
-{
-    display: flex;
-    align-items: center;
-    width: 650px;
-    padding: 5px 5px;
-    border-radius: 5px;
-    
-}
-.categoryChild:hover
-{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-.categoryImages
-{
-    height: 250px;
-    border-radius: 15px;
-    padding: 10px 10px;
-}
-.categoryHeading
-{
-    font-size: 20px;
-    font-weight: 600;
-    padding: 5px 5px;
-    color:var(--bg-clr);
-    
-}
-
-.categoryChild Link
-{
-    text-align: center;
-}
-.catHead{
-    color: var(--font-clr);
-    background-color:#185464;
-    border-radius: 5px;
-    max-width: 50%;
+@media (max-width: 450px) {
+  .categoryBox {
+    width: 350px;
     margin: auto;
-    text-align: center;
+  }
 }

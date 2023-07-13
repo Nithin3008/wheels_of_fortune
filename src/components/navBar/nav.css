@@ -1,109 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;500;600;700;800&display=swap');
-:root
-{
-    --main-clr:#f0f0f2;
-    --bg-clr: #4A4A4B;
-    --font-clr:orangered;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;500;600;700;800&display=swap");
+:root {
+  --main-clr: #f0f0f2;
+  --bg-clr: #4a4a4b;
+  --font-clr: orangered;
 }
-body
-{
-    margin: 0;
-    font-family: 'Noto Sans', sans-serif;
+body {
+  margin: 0;
+  font-family: "Noto Sans", sans-serif;
 }
 
 @media (max-width: 640px) {
-    .NavBox
-    {
-        display: grid;
-        /* grid-template-columns: 1fr ; */
-        justify-items: center;
-    }
-    .Logo
-    {
-        font-size: 30px;
-        font-weight: 600;
-        padding: 10px 10px;
-    }
-    .Logo span
-    {
-        color: var(--font-clr);
-    }
-  .NavLinks    {
-        padding: 10px 10px;
-        margin-top: 10px;
-    }
-    .NavLinks button
-    {
-        border: 0;
-        background-color: var(--font-clr);
-        padding: 5px 10px;
-        border-radius: 4px;
-        color: var(--main-clr);
-        font-size: 16px;
-    }
-    .searchBox
-    {
-        border: 1px solid var(--font-clr);
-    }
-.searchBox input
-{
-    width:250px ;
-    height: 30px;
-    
-}
+  .NavBox {
+    display: grid;
+    /* grid-template-columns: 1fr ; */
+    justify-items: center;
   }
-  @media (min-width: 642px) {
-    .NavBox
-    {   
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
-        
-        
-    }
-    .Logo
-    {
-        font-size: 40px;
-        font-weight: 600;
-        padding: 20px 10px;
-        /* margin-top: 10px; */
-    }
-    .Logo span
-    {
-        color: var(--font-clr);
-    }
-    .searchBox
-    {
-       border: 3px solid var(--font-clr);
-       border-radius: 25px;
-       width: 350px;
-       /* height: 35px; */
-       padding: 10px;
-    }
-    .searchBox input
-    {
-        width:300px ;
-        height: 30px;
-        border: 0;
-        outline: 0;
-        
-    }
-    .NavLinks    { 
-        
-        padding: 20px 10px;
-        /* margin-top: 10px; */
-    }
-    .NavLinks button
-    {
-       
-        border: 0;
-        background-color: white;
-        padding: 5px 10px;
-        border-radius: 4px;
-        color: var(--bg-clr);
-        font-size: 16px;
-    }
+  .Logo {
+    font-size: 30px;
+    font-weight: 600;
+    padding: 10px 10px;
+  }
+  .Logo span {
+    color: var(--font-clr);
+  }
+  .NavLinks {
+    padding: 10px 10px;
+    margin-top: 10px;
+  }
+  .NavLinks button {
+    border: 0;
+    background-color: var(--font-clr);
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: var(--main-clr);
+    font-size: 16px;
+  }
+  .searchBox {
+    border: 1px solid var(--font-clr);
+  }
+  .searchBox input {
+    width: 250px;
+    height: 30px;
+    border: 0;
+    outline: 0;
+  }
+  .searchBox {
+    border: 3px solid var(--font-clr);
+    border-radius: 25px;
+    width: 300px;
+    padding: 10px;
+  }
+}
+@media (min-width: 642px) {
+  .NavBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+  }
+  .Logo {
+    font-size: 40px;
+    font-weight: 600;
+    padding: 20px 10px;
+    /* margin-top: 10px; */
+  }
+  .Logo span {
+    color: var(--font-clr);
+  }
+  .searchBox {
+    border: 3px solid var(--font-clr);
+    border-radius: 25px;
+    width: 350px;
+    /* height: 35px; */
+    padding: 10px;
+  }
+  .searchBox input {
+    width: 300px;
+    height: 30px;
+    border: 0;
+    outline: 0;
+  }
+  .NavLinks {
+    padding: 20px 10px;
+    /* margin-top: 10px; */
+  }
+  .NavLinks button {
+    border: 0;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: var(--bg-clr);
+    font-size: 16px;
+  }
 }

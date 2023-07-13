@@ -1,92 +1,87 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;500;600;700;800&display=swap');
-*
-{
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;500;600;700;800&display=swap");
+* {
   margin: 0px;
   /* padding: 0px; */
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
-:root
-{
-    --main-clr:#f0f0f2;
-    --bg-clr: #4A4A4B;
-    --font-clr:orangered;
-    --font1-clr:#185464;
+:root {
+  --main-clr: #f0f0f2;
+  --bg-clr: #4a4a4b;
+  --font-clr: orangered;
+  --font1-clr: #185464;
 }
 
-.productBox
-{
-    display: flex;
-
-   
+.productBox {
+  display: flex;
 }
-.productImages img
-{
-    height: 200px;
-    border-radius: 5px;
-    cursor: pointer;
-    /* width: 350px; */
+.productImages img {
+  height: 200px;
+  border-radius: 5px;
+  cursor: pointer;
+  /* width: 350px; */
 }
-.producBoxCards
-{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-top: 50px;
+.producBoxCards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  gap: 30px;
 }
-.producBoxCards p
-{
-    font-size: 20px;
-    font-weight: 500;
-    text-align: center;
+.producBoxCards p {
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
 }
-.producBoxCards button
-{
-    border: 0;
-    background-color:var(--font1-clr);
-    padding: 10px 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    color:whitesmoke;
+.producBoxCards button {
+  border: 0;
+  background-color: var(--font1-clr);
+  padding: 10px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: whitesmoke;
 }
-.prdCards
-{
-    padding: 10px 10px;
-    margin: 2px 15px;
-    border-radius: 5px;
+.prdCards {
+  padding: 10px 10px;
+  margin: 2px 15px;
+  border-radius: 5px;
 }
-.prdCards:hover
-{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.prdCards:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.producBoxFilters
-{
-    padding: 10px 10px;
-    margin: 0px 60px;
-    border-right:5px solid #185464;
-    /* width: 400px; */
+.producBoxFilters {
+  padding: 10px 10px;
+  margin: 0px 60px;
+  border-right: 5px solid #185464;
+  /* width: 400px; */
 }
-.producBoxFilters p
-{
-    font-size: 25px;
-    font-weight: 700;
-    color: var(--font-clr);
+.producBoxFilters p {
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--font-clr);
 }
-.range
-{
-    width: 100%;
-    height: 5px;
-    cursor: pointer;
-    border-radius: 1px;
+.range {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  border-radius: 1px;
 }
-.categoryFilter
-{
-    display: flex;
-    flex-direction: column;
+.categoryFilter {
+  display: flex;
+  flex-direction: column;
 }
-.categoryFilter label
-{
-    color: var(--font1-clr);
-    font-size: 20px;
-    padding: 5px;
+.categoryFilter label {
+  color: var(--font1-clr);
+  font-size: 20px;
+  padding: 5px;
+}
+@media (max-width: 800px) {
+  .producBoxFilters {
+    display: none;
+  }
+}
+@media (max-width: 450px) {
+  .productImages img {
+    height: 150px;
+  }
 }
