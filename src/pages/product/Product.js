@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { FuncContext } from "../DataProviders/FuncCall";
@@ -9,6 +9,7 @@ import { NavBar } from "../../components/navBar/nav";
 import { FiltersPage } from "../../components/filters/FiltersPage";
 export function Product1() {
   const nav = useNavigate();
+  const [displayFil, setDisplay] = useState(false);
   const { LoginId, ratingFilter } = useContext(MainContext);
   const {
     pushCartData,
@@ -39,7 +40,23 @@ export function Product1() {
           <div className="filterBox">
             <FiltersPage></FiltersPage>
           </div>
-
+          <div
+            style={{
+              display: displayFil ? "block" : "none",
+              width: "200px",
+              zIndex: 1,
+              position: "sticky",
+            }}
+          >
+            <FiltersPage></FiltersPage>
+          </div>
+          <span
+            class="material-symbols-outlined smalFilterPage"
+            style={{ textAlign: "right", cursor: "pointer" }}
+            onClick={() => setDisplay(!displayFil)}
+          >
+            menu
+          </span>
           <div className="producBoxCards">
             {prodData.map((val) => (
               <div key={val._id} className="prdCards">
