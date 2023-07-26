@@ -8,17 +8,18 @@ body {
   margin: 0;
   font-family: "Noto Sans", sans-serif;
 }
-
+.NavBox {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+}
 @media (max-width: 640px) {
   .NavBox {
     display: grid;
-    /* grid-template-columns: 1fr ; */
     justify-items: center;
   }
   .Logo {
-    font-size: 30px;
-    font-weight: 600;
+    font-size: 20px;
     padding: 10px 10px;
+    font-weight: 500;
   }
   .Logo span {
     color: var(--font-clr);
@@ -39,16 +40,16 @@ body {
     border: 1px solid var(--font-clr);
   }
   .searchBox input {
-    width: 250px;
-    height: 30px;
+    width: 300px;
+    height: 20px;
     border: 0;
     outline: 0;
   }
   .searchBox {
     border: 3px solid var(--font-clr);
     border-radius: 25px;
-    width: 300px;
-    padding: 10px;
+    width: 350px;
+    padding: 5px;
   }
 }
 @media (min-width: 642px) {
@@ -56,13 +57,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
   }
   .Logo {
-    font-size: 40px;
-    font-weight: 600;
-    padding: 20px 10px;
+    font-size: 25px;
+    font-weight: 500;
+    padding: 12px 10px;
     /* margin-top: 10px; */
   }
   .Logo span {
@@ -73,17 +72,16 @@ body {
     border-radius: 25px;
     width: 350px;
     /* height: 35px; */
-    padding: 10px;
+    padding: 5px;
   }
   .searchBox input {
     width: 300px;
-    height: 30px;
+    height: 20px;
     border: 0;
     outline: 0;
   }
   .NavLinks {
-    padding: 20px 10px;
-    /* margin-top: 10px; */
+    padding: 15px 10px;
   }
   .NavLinks button {
     border: 0;
