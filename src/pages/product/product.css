@@ -51,6 +51,7 @@
 @media (max-width: 700px) {
   .filterBox {
     display: none;
+    border-right: 0;
   }
 }
 @media (min-width: 700px) {
